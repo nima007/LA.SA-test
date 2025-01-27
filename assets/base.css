@@ -1,0 +1,28 @@
+:root{
+    --dark-color:#0F1820;
+    
+}
+@font-face {
+    font-family: Kalameh-Light;
+    src: url(./fonts/KalamehWeb-Light.woff);
+}
+
+@font-face {
+    font-family: Kalameh-Regular;
+    src: url(./fonts/KalamehWeb-Regular.woff);
+}
+
+@font-face {
+    font-family: Kalameh-Medium;
+    src: url(./fonts/KalamehWeb-Medium.woff);
+}
+
+@font-face {
+    font-family: Kalameh-SemiBold;
+    src: url(./fonts/KalamehWeb-SemiBold.woff);
+}
+
+@font-face {
+    font-family: Kalameh-Bold;
+    src: url(./fonts/KalamehWeb-Bold.woff);
+}
