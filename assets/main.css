@@ -7,3 +7,17 @@ html,body{
     padding: 0;
     font-family: Kalameh-Regular;
 }
+button , .button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 48px;
+    border: none;
+    border-radius: 30px;
+    padding-inline:var(--gap) ;
+    background-color: var(--light-color-green);
+    font-family: Kalameh-Medium;
+    font-size: 18px;
+    color: #fff;
+}

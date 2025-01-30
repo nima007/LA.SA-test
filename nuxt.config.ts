@@ -3,7 +3,13 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   css:['~/assets/main.css'],
   modules: ['@vueuse/nuxt', '@nuxtjs/i18n'],
-  devtools: { enabled: true },
+  devtools: {
+    enabled: true,
+
+    timeline: {
+      enabled: true
+    }
+  },
   i18n: {
     vueI18n: './i18n.config.ts',
     locales: [
