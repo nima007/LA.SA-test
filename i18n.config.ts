@@ -22,7 +22,13 @@ export default defineI18nConfig(() => {
         defaultLocale: 'fa',
         defaultDirection: 'rtl',
         messages: {
-            fa,en
+           fa,en
         },
     }
 })
+// "fa":{
+//     "a":"نیما"
+// },
+// "en":{
+//     "a":"Nima"
+// }

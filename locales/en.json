@@ -1,3 +1,19 @@
 {
-    "hero":"hero section"
+    "a":"hero section",
+    "menu":{
+        "home":"home",
+        "about":"about us",
+        "blog":"blog",
+        "contact":"contact us",
+        "downloads":"downloads",
+        "products":"valves"
+        
+    },
+    "hero":{
+        "title":"Your coffee bag needs a LA.SA valve",
+        "description":"The best way to keep coffee fresh"
+    },
+    "aboutus":{
+        "title":"About us"
+    }
 }
