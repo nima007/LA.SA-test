@@ -1,12 +1,8 @@
 <template>
   <div class="valve-usage-section" ref="valve_usage_section">
-    <img
-      id="valve-image"
-      :class="{'on-pack': sec3Vis,'hide-opacity-and-size':!valveSec1Vis||sec4Vis}"
-      src="~/assets/images/valves/valveBack.png"
-      alt
-    />
-    <section ref="section_1" :class="{'in-view-port': sec1Vis}">
+    <img id="valve-image" :class="{ 'on-pack': sec3Vis, 'hide-opacity-and-size': !valveSec1Vis || sec4Vis }"
+      src="~/assets/images/valves/valveBack.png" alt />
+    <section ref="section_1" :class="{ 'in-view-port': sec1Vis }">
       <div>
         <div>
           <h2>چرا به سوپاپ قهوه لاسا نیاز داری؟</h2>
@@ -17,7 +13,7 @@
         </div>
       </div>
     </section>
-    <section ref="section_2" :class="{'in-view-port': sec2Vis}">
+    <section ref="section_2" :class="{ 'in-view-port': sec2Vis }">
       <div>
         <div>
           <p>سوپاپ یک طرفه گاز زادایی قهوه لا . سا کربن دی اکسید داخل بسته بندی قهوه رو خارج میکنه</p>
@@ -27,36 +23,42 @@
         </div>
       </div>
     </section>
-    <section ref="section_3" :class="{'in-view-port': sec3Vis,'no-transition':sec4Vis}">
+    <section ref="section_3" :class="{ 'in-view-port': sec3Vis, 'no-transition': sec4Vis }">
       <div class="full-height-width">
         <img src="~/assets/images/coffeePacketGoldRozeNoBackground.png" alt />
       </div>
     </section>
-    <section id="section-image-brif" ref="section_4" :class="{'in-view-port': sec4Vis}">
+    <section id="section-image-brif" ref="section_4" :class="{ 'in-view-port': sec4Vis }">
       <div class="full-height-width no-translate">
         <img src="~/assets/images/coffeePacketGoldRozeWithBackground.png" alt />
       </div>
       <div class="image-section-text-content">
         <div class="content-box">
           <h3 class="title">جلوگیری از انفجار بسته بندی :</h3>
-          <p
-            class="text"
-          >با خارج کردن گاز های داخل بسته بندی مانند CO2 مانع انفجار و ترکیندن بسته بندی از فشار داخل می شود</p>
+          <p class="text">با خارج کردن گاز های داخل بسته بندی مانند CO2 مانع انفجار و ترکیندن بسته بندی از فشار داخل می
+            شود</p>
         </div>
         <div class="content-box">
           <h3 class="title">خروج کنترل شده گاز :</h3>
-          <p
-            class="text"
-          >گاز از سوراخ کوچکی که در جلوی سوپاپ وجود دارد خارج می شود که مانع از تخلیه سریع و دفرمه شدن بسته بندی محصول می شود .</p>
+          <p class="text">گاز از سوراخ کوچکی که در جلوی سوپاپ وجود دارد خارج می شود که مانع از تخلیه سریع و دفرمه شدن
+            بسته بندی محصول می شود .</p>
         </div>
         <div class="content-box">
           <h3 class="title">جلوگیری از انفجار بسته بندی :</h3>
-          <p
-            class="text"
-          >با خارج کردن گاز های داخل بسته بندی مانند CO2 مانع انفجار و ترکیندن بسته بندی از فشار داخل می شود</p>
+          <p class="text">با خارج کردن گاز های داخل بسته بندی مانند CO2 مانع انفجار و ترکیندن بسته بندی از فشار داخل می
+            شود</p>
         </div>
       </div>
     </section>
+    <div style="direction : ltr;position: fixed; top:0;left:0;background-color: black;color:#fff; z-index: 200;">
+      <!-- <BooleanDisplay :value="top" /> -->
+       {{ displayX }}
+       {{ y }}
+    </div>
+    <div id="Nima" ref="Nima">
+      <div>1</div>
+      <div>2</div>
+    </div>
   </div>
 </template>
 <script setup>
@@ -65,6 +67,26 @@ const section_2 = ref(null);
 const section_3 = ref(null);
 const section_4 = ref(null);
 const valve_usage_section = ref(null);
+const Nima = useTemplateRef('Nima');
+const { y, x, isScrolling, arrivedState, directions } = useScroll(Nima);
+const { left: toLeft, right: toRight, top: toTop, bottom: toBottom } = toRefs(directions)
+
+const displayX = computed({
+  get() {
+    return x.value.toFixed(1)
+  },
+  set(val) {
+    x.value = Number.parseFloat(val)
+  },
+})
+const displayY = computed({
+  get() {
+    return y.value.toFixed(1)
+  },
+  set(val) {
+    y.value = Number.parseFloat(val)
+  },})
+
 const valveSec1Vis = useElementVisibility(valve_usage_section, {
   rootMargin: "-50% 0px -100% 0px"
 });
@@ -82,24 +104,41 @@ const sec4Vis = useElementVisibility(section_4, {
 });
 </script>
 <style scoped>
+#Nima{
+  height: 50vh;
+  width: 100vw;
+  overflow: auto;
+  background: red;
+  position: fixed;
+  z-index: 190;
+  top: 0;
+}
+#Nima > div{
+  height: 100vh;
+  width: 100%;
+}
 .hide-opacity-and-size {
   opacity: 0;
   width: 0 !important;
   height: 0 !important;
 }
+
 .no-transition {
   transition: unset !important;
 }
+
 .valve-usage-section {
   width: 100vw;
   font-family: Kalameh-Medium;
   font-size: 24px;
   background: var(--dark-color);
   z-index: 90;
+
   @media (max-width: 980px) {
     font-size: 16px;
   }
 }
+
 #valve-image {
   position: fixed;
   top: 50vh;
@@ -109,10 +148,12 @@ const sec4Vis = useElementVisibility(section_4, {
   z-index: 100;
   transition: 1s;
 }
+
 #valve-image.on-pack {
   transform: translate(-50%, -80%);
   width: 8vh;
 }
+
 section {
   height: 100vh;
   width: 100vw;
@@ -130,13 +171,16 @@ section {
 section.in-view-port {
   opacity: 1;
 }
-section.in-view-port > div {
+
+section.in-view-port>div {
   transform: translate(-50%, -50%);
 }
-section > div.no-translate {
+
+section>div.no-translate {
   transform: translate(-50%, -50%) !important;
 }
-section > div {
+
+section>div {
   width: calc(100% - var(--padding-inline) * 2);
   height: 50vh;
   display: flex;
@@ -149,7 +193,8 @@ section > div {
   transform: translate(-50%, -40%);
   transition: 0.5s;
 }
-section > div > div {
+
+section>div>div {
   height: 50%;
   display: flex;
   flex-direction: column;
@@ -157,6 +202,7 @@ section > div > div {
   padding-block: 92px;
   width: calc(50% - 172px);
 }
+
 .full-height-width {
   height: 100vh;
   width: 100vw;
@@ -174,13 +220,16 @@ section > div > div {
   right: 50%;
   transform: translateX(50%);
 }
-section > div > div:nth-child(2) {
+
+section>div>div:nth-child(2) {
   margin-top: auto;
   justify-content: start;
 }
-section > div > div h2 {
+
+section>div>div h2 {
   font-size: 36px;
   font-family: Kalameh-SemiBold;
+
   @media (max-width: 980px) {
     font-size: 24px;
   }
@@ -191,8 +240,9 @@ section > div > div h2 {
   height: fit-content;
   border: 2px solid red;
 }
-.full-height-width.no-translate {
-}
+
+.full-height-width.no-translate {}
+
 .image-section-text-content {
   position: relative;
   column-gap: 20vw;
@@ -208,7 +258,8 @@ section > div > div h2 {
   left: unset !important;
   transform: unset !important;
 }
-.image-section-text-content > .content-box {
+
+.image-section-text-content>.content-box {
   width: 300px;
   background: #d9d9d977;
   color: #fff;
@@ -217,56 +268,98 @@ section > div > div h2 {
   display: flex;
   gap: 12px;
 }
-.image-section-text-content > .content-box:nth-child(even) {
+
+.image-section-text-content>.content-box:nth-child(even) {
   margin-top: 256px;
 }
-.image-section-text-content > .content-box > * {
+
+.image-section-text-content>.content-box>* {
   margin: 0;
 }
-.image-section-text-content > .content-box .title {
+
+.image-section-text-content>.content-box .title {
   font-size: Kalameh-SemiBold;
   font-size: 24px;
 }
-.image-section-text-content > .content-box .text {
+
+.image-section-text-content>.content-box .text {
   font-family: Kalameh-Regular;
   font-size: 20px;
 }
+
 @media (max-width: 980px) {
   #valve-image {
     width: 30vw;
     top: 30vh;
   }
-  section > div{
+
+  #valve-image.on-pack {
+    top: 50vh;
+  }
+
+  section>div {
     gap: 0;
     flex-direction: column;
     height: fit-content;
     max-height: 60vh;
     transform: translateY(0) translateX(-50%) !important;
+    transition: 1s !important;
   }
-  section > div:not(.full-height-width){
+
+  section>div:not(.full-height-width) {
     top: calc(30vh + 30vw);
-  
+
   }
-  section > div.full-height-width{
+
+  section>div:not(.full-height-width)>* {
+    transition: 1s;
+    transform: translateY(0) translateX(50%) !important;
+  }
+
+  section>div:not(.full-height-width)> :nth-child(even) {
+    transform: translateY(0) translateX(-50%) !important;
+
+  }
+
+  section.in-view-port>div:not(.full-height-width)>* {
+    transform: translateY(0) translateX(0) !important;
+
+  }
+
+  section>div.full-height-width {
     max-height: 100vh;
   }
-  section > div.full-height-width:not(.no-translate){
+
+  section>div.full-height-width:not(.no-translate) {
     transform: translateY(0) translateX(-50%) !important;
   }
-  section.in-view-port > div.full-height-width{
+
+  section.in-view-port>div.full-height-width {
     transform: translateY(-50%) translateX(-50%) !important;
 
   }
 
-  section > div > div{
+  section>div>div {
     width: 100%;
     padding: 0;
   }
-  section > div > div *{
-    text-align: justify !important;
 
+  section>div>div * {
+    text-align: center !important;
+
+  }
+
+  .image-section-text-content {
+    max-height: unset;
+  }
+
+  .image-section-text-content>.content-box {
+    max-width: 100%;
+  }
+
+  .image-section-text-content>.content-box:nth-child(even) {
+    margin-top: 0;
   }
 
 }
 </style>
-
