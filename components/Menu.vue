@@ -247,11 +247,16 @@ nav > ul a.router-link-active {
     position: fixed;
     padding: 24px;
     z-index: -1;
-    transition: 0.5s ease-in-out;
+    transition: .5s ease-in-out;
     top: 0px;
     right: 8px;
     border-radius: 50%;
     background: var(--dark-color);
+  }
+  #nav-container:dir(ltr){
+    left: 8px;
+    right: unset;
+    
   }
   #nav-container::before {
     position: fixed;
@@ -265,15 +270,28 @@ nav > ul a.router-link-active {
     border-radius: 50%;
     z-index: -1;
     transform: translate(0%, -0%);
-    transition: 0.5s;
+    transition: .5s;
     transform-origin: center;
     transform-box: fill-box;
   }
+  #nav-container:dir(ltr):before {
+    right: unset;
+    left: 0;
+  }
   header.open-menu #nav-container::before {
     height: calc(100vh * 3);
+    top:-240px;
+    right: -240px;
+    box-shadow:0 0 20px rgba(81, 81, 81, 0.623);
     transform: translate(50%, -50%);
   }
+  header.open-menu #nav-container:dir(ltr)::before {
+    top:-240px;
+    left: -240px;
+    right: unset;
+    transform: translate(-50%, -50%);
 
+  }
   header.open-menu #nav-container {
     top: calc(var(--menu-top-position) * -1);
     right: calc(var(--menu-right-postion) * -1);
@@ -281,6 +299,12 @@ nav > ul a.router-link-active {
     height: 100vh;
     border-radius: 0;
   }
+  header.open-menu #nav-container:dir(ltr) {
+    left: calc(var(--menu-right-postion) * -1);
+    right: unset;
+
+  }
+
   #nav-container > nav {
     display: none;
     margin-top: 128px;

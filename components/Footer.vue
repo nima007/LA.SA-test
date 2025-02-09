@@ -1,12 +1,11 @@
 <template>
   <footer>
-    <div class="top-space">
-    </div>
+    <div class="top-space"></div>
     <div class="bottom-space">
-      <img id="footer-logo" src="~/assets/images/LASA_Logo.png" alt="">
+      <img id="footer-logo" src="~/assets/images/LASA_Logo.png" alt />
 
       <div class="first">
-        <p class="heading-title">با ما در ارتباط باشید</p>
+        <p class="heading-title">{{$t('footer.contact-us')}}</p>
         <form @submit.prevent>
           <label for>
             <span>{{$t('footer.name')}}</span>
@@ -16,10 +15,6 @@
             <span>{{$t('footer.company')}}</span>
             <input type="text" />
           </label>
-          <!-- <label for>
-            <span>شماره تماس</span>
-            <input type="text" />
-          </label>-->
           <label for>
             <span>{{$t('footer.phone')}}</span>
             <vue-tel-input v-model="mobileNumber" mode="international" />
@@ -33,13 +28,12 @@
             <textarea></textarea>
           </label>
           <button>
-            <span> {{$t('footer.send')}}  </span>
+            <span>{{$t('footer.send')}}</span>
           </button>
         </form>
       </div>
       <div class="second">
-        <p class="heading-title">با ما در ارتباط باشید</p>
-
+        <p class="heading-title">{{$t('footer.other-ways')}}</p>
       </div>
     </div>
   </footer>
@@ -50,31 +44,31 @@ const mobileNumber = ref();
 </script>
 
 <style scoped>
-.heading-title{
+.heading-title {
   font-size: 32px;
   font-family: Kalameh-SemiBold;
   margin-bottom: 52px;
 }
-.top-space{
+.top-space {
   height: 37vh;
   width: 100%;
   overflow: hidden;
   position: relative;
 }
-.top-space::before{
-  content: '';
+.top-space::before {
+  content: "";
   display: block;
   width: 200%;
   aspect-ratio: 1/1;
-  background:  var(--light-color);
+  background: var(--light-color);
   position: absolute;
-  bottom:  0;
+  bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   border-radius: 50%;
   z-index: 0;
 }
-.bottom-space > #footer-logo{
+.bottom-space > #footer-logo {
   position: absolute;
   top: 0;
   left: 50%;
@@ -97,11 +91,10 @@ footer .bottom-space {
   gap: 11vw;
   padding: var(--padding-inline);
 }
-footer .bottom-space > *{
+footer .bottom-space > * {
   width: calc(50% - 5vw);
 }
 footer form {
-  
   display: flex;
   flex-flow: wrap;
   gap: calc(var(--gap) + 12px);
@@ -133,13 +126,36 @@ footer form > button {
   min-width: 100%;
   border-radius: 12px;
 }
+footer form label > textarea {
+  height: 150px !important;
+  resize: none;
+}
 footer form > button {
   margin-top: -12px;
   height: 64px;
   font-family: Kalameh-SemiBold;
   font-size: 24px;
 }
-footer .second{
+footer .second {
   text-align: end;
+}
+@media (max-width: 980px) {
+  footer > .bottom-space {
+    flex-direction: column;
+    padding-top: 15vw;
+  }
+  footer > .bottom-space > * {
+    width: 100%;
+  }
+  footer .bottom-space .second {
+    text-align: start;
+  }
+  .bottom-space > #footer-logo {
+    width: 30vw;
+  }
+  footer form label {
+    max-width: unset;
+    min-width: 100%;
+  }
 }
 </style>

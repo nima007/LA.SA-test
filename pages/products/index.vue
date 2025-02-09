@@ -31,5 +31,13 @@ main{
     list-style: none;
     padding: 0;
     margin-block: 72px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+@media (max-width:980px) {
+  #products-and-valves-list{
+    align-items: center;
+  }
 }
 </style>

@@ -21,7 +21,9 @@
         "email": "Email address for response",
         "phone": "Phone number",
         "message": "Your message",
-        "send": "Accept and submit"
+        "send": "Accept and submit",
+        "contact-us": "contact with us",
+        "other-ways": "other ways to contact us"
     },
     "products-page": {
         "page-title": "valves and products"
