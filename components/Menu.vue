@@ -20,7 +20,7 @@
               <NuxtLinkLocale :to="{name:'homePage'}">{{$t('menu.home')}}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale>{{$t('menu.products')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{name:'products'}">{{$t('menu.products')}}</NuxtLinkLocale>
             </li>
             <li>
               <NuxtLinkLocale :to="{name:'about_us'}">{{$t('menu.about')}}</NuxtLinkLocale>

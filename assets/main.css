@@ -1,36 +1,88 @@
 @import url(./base.css);
-*{
+
+* {
     box-sizing: border-box;
 }
-html,body{
+
+html,
+body {
     margin: 0;
     padding: 0;
-    font-family: Kalameh-Regular;overflow-x: hidden;
+    font-family: Kalameh-Regular;
+    overflow-x: hidden;
     width: 100vw;
     color: #000;
 }
-div#app > main > section:not(.no-padding){
+
+div#app>main>section:not(.no-padding) {
     padding-inline: var(--padding-inline);
 }
-body{
-  background: var(--light-color);
+div#app>main{
+    min-height: 100vh;
 }
-button,.button{
+body {
+    background: var(--light-color);
+}
+
+button,
+.button {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
     height: 48px;
-    border: none; 
+    border: none;
     font-family: Kalameh-Medium;
     font-size: 18px;
 }
-.button > span,button > span{
+
+.button>span,
+button>span {
     padding-top: 5px;
 }
-button:not(.no-button-appearance) , .button{
+
+button:not(.no-button-appearance),
+.button {
     border-radius: 30px;
-    padding-inline:var(--gap) ;
+    padding-inline: var(--gap);
     background-color: var(--light-color-green);
     color: var(--dark-color);
+}
+
+.vue-tel-input {
+    direction: ltr;
+    color: #000;
+    border: none !important;
+}
+
+.vti__dropdown {
+    border: 1px solid #fff;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-radius: 12px;
+}
+
+footer form input:not([type="checkbox"]):not([type="radio"]),
+footer form select,
+footer form textarea {
+    border: 1px solid var(--light-color-2);
+    background: none;
+    border-radius: 12px;
+    height: 64px !important;
+    width: 100%;
+    color: #fff;
+    font-family: Kalameh-Regular;
+    font-size: 16px;
+}
+
+.vue-tel-input input[type=tel] {
+    border-left: none !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.page-title{
+    font-size: 48px ;
+    font-family: Kalameh-SemiBold;
+    margin: 0;
 }

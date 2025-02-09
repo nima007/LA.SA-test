@@ -9,7 +9,7 @@
       </div>
       <div id="wave"></div>
     </section>
-    <home-ValveUsage  />
+    <home-ValveUsage  style="pointer-events: none;" />
     <section></section>
   </main>
 </template>
@@ -19,6 +19,13 @@ definePageMeta({
 });
 </script>
 <style scoped>
+main > *{
+  z-index: 90;
+  position: relative;
+}
+.valve-usage-section{
+  z-index: 89;
+}
 #hero-section {
   position: relative;
 }

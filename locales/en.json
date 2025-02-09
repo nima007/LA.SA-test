@@ -1,19 +1,29 @@
 {
-    "a":"hero section",
-    "menu":{
-        "home":"home",
-        "about":"about us",
-        "blog":"blog",
-        "contact":"contact us",
-        "downloads":"downloads",
-        "products":"valves"
-        
+    "a": "hero section",
+    "menu": {
+        "home": "home",
+        "about": "about us",
+        "blog": "blog",
+        "contact": "contact us",
+        "downloads": "downloads",
+        "products": "valves"
     },
-    "hero":{
-        "title":"Your coffee bag needs a LA.SA valve",
-        "description":"The best way to keep coffee fresh"
+    "hero": {
+        "title": "Your coffee bag needs a LA.SA valve",
+        "description": "The best way to keep coffee fresh"
     },
-    "aboutus":{
-        "title":"About us"
+    "aboutus": {
+        "title": "About us"
+    },
+    "footer": {
+        "name": "Name and Surname",
+        "company": "Company name / ...",
+        "email": "Email address for response",
+        "phone": "Phone number",
+        "message": "Your message",
+        "send": "Accept and submit"
+    },
+    "products-page": {
+        "page-title": "valves and products"
     }
 }

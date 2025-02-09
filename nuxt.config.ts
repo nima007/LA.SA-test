@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       enabled: true
     }
   },
+  plugins: ["~/plugins/vue-tel-input.ts"],
   i18n: {
     vueI18n:"./i18n.config.ts",
     locales: [

@@ -2,6 +2,7 @@
   <div id="app">
     <Menu></Menu>
     <NuxtPage />
+    <Footer />
   </div>
 </template>
 <script setup>
