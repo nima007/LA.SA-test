@@ -10,8 +10,8 @@
         class="product-description"
       >سوپاپ گاز زدایی با فیلتر برای بسته بندی های مواد غذایی</p>
       <div class="link-list">
-        <NuxtLink itemprop="url" class="button">مشاهده</NuxtLink>
-        <NuxtLink class="button btn-secondery">دانلود کاتالوگ</NuxtLink>
+        <NuxtLinkLocale :to="{name:'product_page',params:{slug:'x'}}" itemprop="url" class="button">مشاهده</NuxtLinkLocale>
+        <NuxtLink class="button btn-secondary">دانلود کاتالوگ</NuxtLink>
       </div>
     </div>
   </li>
@@ -66,11 +66,7 @@ li {
 .link-list > * {
   padding-inline: var(--padding-inline);
 }
-.btn-secondery {
-  color: var(--light-color-green);
-  background: transparent;
-  border: 2px solid var(--light-color-green);
-}
+
 @media (max-width: 980px) {
   li {
     flex-direction: column;

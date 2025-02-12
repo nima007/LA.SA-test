@@ -17,9 +17,11 @@ body {
 div#app>main>section:not(.no-padding) {
     padding-inline: var(--padding-inline);
 }
-div#app>main{
+
+div#app>main {
     min-height: 100vh;
 }
+
 body {
     background: var(--light-color);
 }
@@ -47,6 +49,12 @@ button:not(.no-button-appearance),
     padding-inline: var(--gap);
     background-color: var(--light-color-green);
     color: var(--dark-color);
+}
+
+.btn-secondary {
+    color: var(--light-color-green) !important;
+    background: transparent !important;
+    border: 2px solid var(--light-color-green);
 }
 
 .vue-tel-input {
@@ -81,8 +89,8 @@ footer form textarea {
     border-bottom-left-radius: 0 !important;
 }
 
-.page-title{
-    font-size: 48px ;
+.page-title {
+    font-size: 48px;
     font-family: Kalameh-SemiBold;
     margin: 0;
 }
