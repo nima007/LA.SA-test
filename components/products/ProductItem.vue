@@ -52,7 +52,6 @@ li {
   transform: translateY(40%);
 }
 .product-name {
-  font-family: Kalameh-SemiBold;
   font-size: 32px;
 }
 .product-description {
