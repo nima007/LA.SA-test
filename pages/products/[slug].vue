@@ -39,6 +39,39 @@
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
             </tr>
+            <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr> <tr>
+              <td>مواد اولیه</td>
+              <td>-</td>
+              <td>پلیپروپلین درجه غذایی</td>
+            </tr>
           </tbody>
         </table>
       </section>
@@ -46,7 +79,22 @@
     <section id="product-images-container" class="no-padding">
       <ul>
         <li>
-          <img itemprop="image" src alt />
+          <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
+        </li>
+        <li>
+          <img itemprop="image" src="~/assets/images/valves/valveFront.png" alt />
+        </li>
+        <li>
+          <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
+        </li>
+        <li>
+          <img itemprop="image" src="~/assets/images/valves/valveFront.png" alt />
+        </li>
+        <li>
+          <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
+        </li>
+        <li>
+          <img itemprop="image" src="~/assets/images/valves/valveFront.png" alt />
         </li>
       </ul>
     </section>
@@ -90,6 +138,29 @@ main > * {
     top: 0;
   }
 }
+#product-images-container > ul {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  list-style: none;
+}
+#product-images-container > ul > li{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: fit-content;
+  max-height: 50%;
+}
+#product-images-container > ul > li > img{
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+}
 #product-data-container {
   padding-top: calc(var(--menu-height) * 1.8);
   height: 300vh;
@@ -126,16 +197,22 @@ button:not(.btn-secondary),
 @media (max-width: 980px) {
   main {
     flex-direction: column;
+    padding-bottom: 20vh;
   }
   #product-images-container {
-    height: 40vh !important;
+    height: 50vh !important;
     flex: unset !important;
     min-height: 400px;
     padding-top: calc(var(--menu-height) * 1.8);
     order: 1;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
   }
   #product-data-container {
     order: 2;
+  }
+  #product-call-to-action-list {
+    flex-direction: column;
   }
 }
 </style>
