@@ -83,6 +83,8 @@ footer {
   width: 100%;
   background: var(--dark-color);
   color: #fff;
+  position: relative;
+  z-index: 101;
 }
 footer .bottom-space {
   position: relative;

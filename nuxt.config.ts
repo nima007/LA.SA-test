@@ -31,5 +31,11 @@ export default defineNuxtConfig({
     ],
     strategy: 'prefix_and_default',
     baseUrl:'localhsot:3000'
+  },
+  runtimeConfig:{
+    mongoose_url:'mongodb://localhost:27017/LASA_db'
+  },
+  nitro:{
+    plugins:['~/server/db/index.js']
   }
 })
