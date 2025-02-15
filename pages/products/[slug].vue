@@ -8,7 +8,7 @@
         یکپارچگی و عملکرد ثابت را برای یک دوره دو ساله تضمین می کند. شکل و
         اندازه دریچه طوری طراحی شده است که اطمینان حاصل شود که بسته بندی قهوه خیلی سریع منبسط نمی شود.
       </p>
-      <section>
+      <section id="action-holder">
         <P
           class="attention"
           style="margin-bottom: var(--gap);"
@@ -43,31 +43,38 @@
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
-            </tr> <tr>
+            </tr>
+            <tr>
               <td>مواد اولیه</td>
               <td>-</td>
               <td>پلیپروپلین درجه غذایی</td>
@@ -112,18 +119,15 @@ main {
   width: 100%;
   height: fit-content;
   display: flex;
-  position: relative;
-
-  @media (min-width: 980px) {
-    height: 100vh;
-    overflow: auto;
-  }
+  font-size: 20px;
 }
 main * {
   margin: 0;
 }
-main > * {
-  flex: 1;
+@media (min-width: 980px) {
+  main > * {
+    width: 50vw;
+  }
 }
 .spliter {
   width: 100%;
@@ -134,7 +138,8 @@ main > * {
   overflow: auto;
   height: 100vh;
   @media (min-width: 980px) {
-    position: sticky;
+    position: fixed;
+    margin-inline-start: 50vw;
     top: 0;
   }
 }
@@ -148,7 +153,7 @@ main > * {
   overflow-y: auto;
   list-style: none;
 }
-#product-images-container > ul > li{
+#product-images-container > ul > li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +161,7 @@ main > * {
   height: fit-content;
   max-height: 50%;
 }
-#product-images-container > ul > li > img{
+#product-images-container > ul > li > img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
@@ -184,7 +189,6 @@ button:not(.btn-secondary),
   margin-block: 24px;
 }
 .product-description {
-  font-size: 20px;
   margin-block: 0 24px;
 }
 .section-title {
@@ -198,21 +202,51 @@ button:not(.btn-secondary),
   main {
     flex-direction: column;
     padding-bottom: 20vh;
+    font-size: 16px;
+  }
+  #product-data-container .product-name ~ * {
+    order: 3;
+  }
+  #action-holder {
+    order: 2 !important;
+  }
+  #product-call-to-action-list {
+    flex-direction: column;
   }
   #product-images-container {
     height: 50vh !important;
     flex: unset !important;
     min-height: 400px;
-    padding-top: calc(var(--menu-height) * 1.8);
+    padding-top: calc(var(--menu-height) * 1.5);
     order: 1;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
+    border-bottom-right-radius: 40%;
+    border-bottom-left-radius: 40%;
+    border-bottom: 4px solid #ffdd55;
   }
   #product-data-container {
     order: 2;
+    padding-top: var(--gap);
   }
-  #product-call-to-action-list {
-    flex-direction: column;
+
+  #product-images-container > ul {
+    flex-direction: row;
+    overflow-x: auto;
+    align-items: center;
+    padding-inline: 20vw;
+  }
+  #product-images-container > ul li {
+    width: fit-content;
+    min-width: 50vw;
+    max-width: 90vw;
+    height: 100%;
+    max-height: unset;
+  }
+  .product-name {
+    font-size: 32px;
+    margin-bottom: 0;
+  }
+  .product-description {
+    margin-top: var(--gap);
   }
 }
 </style>
