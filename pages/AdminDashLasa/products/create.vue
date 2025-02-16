@@ -8,97 +8,16 @@
             </section>
             <section>
                 <div>
-                    <input type="text" placeholder="نام محصول" />
-                    <textarea placeholder="توضیحات" />
+                    <input type="text" v-model="product.name.fa" placeholder="نام محصول" />
+                    <textarea v-model="product.description.fa" placeholder="توضیحات" />
                 </div>
                 <div>
-                    <input type="text" placeholder="نام محصول" />
-                    <textarea placeholder="توضیحات" />
+                    <input type="text" v-model="product.name.en" placeholder="نام محصول" />
+                    <textarea v-model="product.description.en" placeholder="توضیحات" />
                 </div>
             </section>
             <section>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    نام ویژگی
-                                </th>
-                                <th>
-                                    نام واحد
-                                </th>
-                                <th>
-                                    مقدار
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>
-                                    نام ویژگی
-                                </th>
-                                <th>
-                                    نام واحد
-                                </th>
-                                <th>
-                                    مقدار
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                                <td>
-                                    <input type="text">
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                <AdminProductsAttributeTable v-model="product.attributes" />
             </section>
             <section>
                 <p>
@@ -111,7 +30,7 @@
                 <p>لیست تصاویر</p>
                 <div style="width: 100% !important;"></div>
             </section>
-            <button type="submit">ثبت</button>
+            <button @click="saveProduct">ثبت</button>
         </form>
     </main>
 </template>
@@ -120,15 +39,42 @@ definePageMeta({
     title: "ادمین - محصولات",
     name: "admin_products_create"
 });
+
+const product = ref({
+    name: {
+        fa: "",
+        en: ""
+    }, description: {
+        fa: "",
+        en: ""
+    }, attributes: [
+
+    ],
+    images: [],
+    primaryImage: "",
+    catalogue: []
+})
+function saveProduct() {
+    $fetch("/api/admin/products/create", {
+        method: "POST",
+        body: JSON.stringify(product.value)
+    }).then(res => {
+        if (res.ok) {
+            console.log("Product created successfully")
+        }
+    })
+}
 </script>
 <style scoped>
-main{
+main {
     padding-top: 150px;
 }
-form{
+
+form {
     width: 100%;
 }
-form > section{
+
+form>section {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -137,7 +83,8 @@ form > section{
     border-bottom: 2px solid #000;
     padding-bottom: 24px;
 }
-form > section > div{
+
+form>section>div {
     display: flex;
     flex-direction: column;
     width: 50%;
@@ -145,7 +92,8 @@ form > section > div{
     padding-inline: 24px;
     gap: 24px;
 }
-form > section > div:first-of-type{
+
+form>section>div:first-of-type {
     border-inline-end: 1px solid #000;
 }
 </style>

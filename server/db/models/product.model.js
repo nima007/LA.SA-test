@@ -6,22 +6,24 @@ const productSchema = new Schema({
         fa: String,
         en: String
     },
-    attributes: {
-        fa: [
-            {
-                key: String,
-                value: String,
-                unit: String
+    attributes: [
+        {
+            name: {
+                fa: String,
+                en: String
+            },
+            value: {
+                fa: String,
+                en: String
+            },
+            unit: {
+                fa: String,
+                en: String
             }
-        ],
-        en: [
-            {
-                key: String,
-                value: String,
-                unit: String
-            }
-        ]
-    },
+        }
+    ],
+    primaryImage: String,
     images: [String],
     catalogue: [String]
 })
+export default model('Product', productSchema)
