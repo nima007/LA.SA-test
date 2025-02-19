@@ -17,7 +17,7 @@
                 </div>
             </section>
             <section>
-                <AdminProductsAttributeTable v-model="product.attributes" />
+                <AdminProductsAttributeTable style="width: 100% !important;" v-model="product.attributes" />
             </section>
             <section>
                 <p>
@@ -51,8 +51,8 @@ const product = ref({
 
     ],
     images: [],
-    primaryImage: "",
-    catalogue: []
+    primaryImage: {},
+    // catalogue: []
 })
 function saveProduct() {
     $fetch("/api/admin/products/create", {

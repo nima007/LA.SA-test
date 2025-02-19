@@ -1,24 +1,20 @@
 <template>
-  <main itemscope itemtype="https://schema.org/Product">
+  <main v-if="data" itemscope itemtype="https://schema.org/Product">
     <section id="product-data-container" class="no-padding">
-      <h1 itemprop="name" class="product-name">سوپاپ گاز زدایی فیلتر دار</h1>
+      <h1 itemprop="name" class="product-name">{{ data.name }} </h1>
       <p itemprop="description" class="product-description">
-        شیر گاز زدایی یک طرفه LA.SA برای آزادسازی دی اکسید کربن (CO2) طراحی شده است که به طور طبیعی
-        در طول فرآیند برشته کردن دانه های قهوه رخ می دهد. دریچه های گاز زدایی یک طرفه کار می کنند
-        یکپارچگی و عملکرد ثابت را برای یک دوره دو ساله تضمین می کند. شکل و
-        اندازه دریچه طوری طراحی شده است که اطمینان حاصل شود که بسته بندی قهوه خیلی سریع منبسط نمی شود.
+        {{ data.description }}
       </p>
       <section id="action-holder">
-        <P
-          class="attention"
-          style="margin-bottom: var(--gap);"
-        >برای استعلام قیمت و سفارش با ما در ارتباط باشید</P>
+        <p class="attention" style="margin-bottom: var(--gap);">
+          {{ $t('product-page.attention-to-call') }}
+        </p>
         <div id="product-call-to-action-list">
           <button>
-            <span>ارتباط با ما</span>
+            <span>{{ $t('menu.contact') }}</span>
           </button>
           <button class="btn-secondary">
-            <span>دانلود کاتالوگ</span>
+            <span>{{ $t('product-item.button-catalogue') }}</span>
           </button>
         </div>
       </section>
@@ -28,56 +24,16 @@
         <table>
           <thead>
             <tr>
-              <th>نوع</th>
-              <th>واحد</th>
-              <th>مقدار</th>
+              <th>{{$t('product-page.attr-table.title')}}</th>
+              <th>{{$t('product-page.attr-table.unit')}}</th>
+              <th>{{$t('product-page.attr-table.value')}}</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
-            </tr>
-            <tr>
-              <td>مواد اولیه</td>
-              <td>-</td>
-              <td>پلیپروپلین درجه غذایی</td>
+            <tr v-for="attribute in data.attributes" :key="attribute.name">
+              <td>{{ attribute.name }} </td>
+              <td>{{ attribute.unit }}</td>
+              <td>{{attribute.value}}</td>
             </tr>
           </tbody>
         </table>
@@ -112,6 +68,12 @@
 definePageMeta({
   name: "product_page"
 });
+const route = useRoute();
+const productSlug = ref(route.params.slug);
+const { data } = await useFetch(`/api/products/${productSlug.value}`, { query: { lang: useI18n().locale.value } });
+if (data) {
+  console.log("data", data);
+}
 </script>
 
 <style scoped>
@@ -121,29 +83,35 @@ main {
   display: flex;
   font-size: 20px;
 }
+
 main * {
   margin: 0;
 }
+
 @media (min-width: 980px) {
-  main > * {
+  main>* {
     width: 50vw;
   }
 }
+
 .spliter {
   width: 100%;
   margin-block: 50px 10px;
 }
+
 #product-images-container {
   background-color: var(--dark-color);
   overflow: auto;
   height: 100vh;
+
   @media (min-width: 980px) {
     position: fixed;
     margin-inline-start: 50vw;
     top: 0;
   }
 }
-#product-images-container > ul {
+
+#product-images-container>ul {
   display: flex;
   flex-direction: column;
   padding: 0;
@@ -153,7 +121,8 @@ main * {
   overflow-y: auto;
   list-style: none;
 }
-#product-images-container > ul > li {
+
+#product-images-container>ul>li {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -161,11 +130,13 @@ main * {
   height: fit-content;
   max-height: 50%;
 }
-#product-images-container > ul > li > img {
+
+#product-images-container>ul>li>img {
   max-width: 100%;
   max-height: 100%;
   width: auto;
 }
+
 #product-data-container {
   padding-top: calc(var(--menu-height) * 1.8);
   height: 300vh;
@@ -173,24 +144,30 @@ main * {
   flex-direction: column;
   gap: var(--gap);
 }
-#product-data-container > *:not(.no-padding) {
+
+#product-data-container>*:not(.no-padding) {
   padding-inline: var(--padding-inline);
 }
+
 #product-call-to-action-list {
   display: flex;
   gap: calc(var(--gap) / 2);
 }
+
 button:not(.btn-secondary),
 .button:not(.btn-secondary) {
   border: 2px solid var(--dark-color);
 }
+
 .product-name {
   font-size: 48px;
   margin-block: 24px;
 }
+
 .product-description {
   margin-block: 0 24px;
 }
+
 .section-title {
   font-family: Kalameh-SemiBold;
   font-size: 32px;
@@ -198,21 +175,26 @@ button:not(.btn-secondary),
   width: 100%;
   display: inline-block;
 }
+
 @media (max-width: 980px) {
   main {
     flex-direction: column;
     padding-bottom: 20vh;
     font-size: 16px;
   }
-  #product-data-container .product-name ~ * {
+
+  #product-data-container .product-name~* {
     order: 3;
   }
+
   #action-holder {
     order: 2 !important;
   }
+
   #product-call-to-action-list {
     flex-direction: column;
   }
+
   #product-images-container {
     height: 50vh !important;
     flex: unset !important;
@@ -223,28 +205,32 @@ button:not(.btn-secondary),
     border-bottom-left-radius: 40%;
     border-bottom: 4px solid #ffdd55;
   }
+
   #product-data-container {
     order: 2;
     padding-top: var(--gap);
   }
 
-  #product-images-container > ul {
+  #product-images-container>ul {
     flex-direction: row;
     overflow-x: auto;
     align-items: center;
     padding-inline: 20vw;
   }
-  #product-images-container > ul li {
+
+  #product-images-container>ul li {
     width: fit-content;
     min-width: 50vw;
     max-width: 90vw;
     height: 100%;
     max-height: unset;
   }
+
   .product-name {
     font-size: 32px;
     margin-bottom: 0;
   }
+
   .product-description {
     margin-top: var(--gap);
   }

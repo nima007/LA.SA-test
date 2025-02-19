@@ -26,10 +26,10 @@
               <NuxtLinkLocale :to="{name:'about_us'}">{{$t('menu.about')}}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale>{{$t('menu.blog')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{name:'blogs_index'}">{{$t('menu.blog')}}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale>{{$t('menu.contact')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{name:'contact_us'}">{{$t('menu.contact')}}</NuxtLinkLocale>
             </li>
           </ul>
         </nav>

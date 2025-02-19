@@ -82,9 +82,9 @@ button:not(.no-button-appearance),
     border-radius: 12px;
 }
 
-footer form input:not([type="checkbox"]):not([type="radio"]),
-footer form select,
-footer form textarea {
+form input:not([type="checkbox"]):not([type="radio"]),
+form select,
+form textarea {
     border: 1px solid var(--light-color-2);
     background: none;
     border-radius: 12px;
@@ -94,15 +94,41 @@ footer form textarea {
     font-family: Kalameh-Regular;
     font-size: 16px;
 }
+footer form input:not([type="checkbox"]):not([type="radio"]),
+footer form select,
+footer form textarea {
+    border: 1px solid var(--light-color-2);
+    color: #fff;
+    font-family: Kalameh-Regular;
+}
 
 .vue-tel-input input[type=tel] {
     border-left: none !important;
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
 }
+#message-section .vue-tel-input input{
+    border-color: var(--dark-color);
+}
+#message-section .vue-tel-input-label  span{
+    right: 0 !important;
+}
+#message-section .vue-tel-input-label  span:dir(ltr){
+    right: unset !important;
+    left: 0;
+}
+
+#message-section .vti__dropdown {
+    border-color: var(--dark-color);
+}
 
 .page-title {
     font-size: 48px;
+    font-family: Kalameh-SemiBold;
+    margin: 0;
+}
+.page-title-large{
+    font-size: 64px;
     font-family: Kalameh-SemiBold;
     margin: 0;
 }

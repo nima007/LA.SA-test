@@ -1,7 +1,6 @@
 export default async function (Schema, event = useEvent()) {
     console.log("in validation");
     const body = await readBody(event);
-    console.log("body ",body);
     
     const { error } = Schema.validate(body)
     if (error) {

@@ -4,21 +4,24 @@
       <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
     </div>
     <div class="product-data-containter">
-      <p itemprop="name" class="product-name">سوپاپ گاز زدایی با فیلتر</p>
+        <p itemprop="name" class="product-name">    {{product.name}}</p>
       <p
         itemprop="description"
         class="product-description"
-      >سوپاپ گاز زدایی با فیلتر برای بسته بندی های مواد غذایی</p>
+      >{{product.description}}</p>
       <div class="link-list">
-        <NuxtLinkLocale :to="{name:'product_page',params:{slug:'x'}}" itemprop="url" class="button">مشاهده</NuxtLinkLocale>
-        <NuxtLink class="button btn-secondary">دانلود کاتالوگ</NuxtLink>
+        <NuxtLinkLocale :to="{name:'product_page',params:{slug:'filter-valve'}}" itemprop="url" class="button">
+          {{$t('product-item.button-more')}}
+        </NuxtLinkLocale>
+        <NuxtLink class="button btn-secondary">
+          {{$t('product-item.button-catalogue')}}</NuxtLink>
       </div>
     </div>
   </li>
 </template>
 
-<script>
-export default {};
+<script setup>
+ const props = defineProps(['product']);
 </script>
 
 <style scoped>

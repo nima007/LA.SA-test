@@ -10,21 +10,31 @@
     <section ref="section_1" :class="{ 'in-view-port': sec1Vis }">
       <div>
         <div>
-          <h2>چرا به سوپاپ قهوه لاسا نیاز داری؟</h2>
-          <p>قهوه بعد از فرایند رست به صورت طبیعی کربن دی اکسید(co2) آزاد می کند .</p>
+          <h2>
+            چرا به سوپاپ قهوه لاسا نیاز داری؟
+          </h2>
+          <p>
+            قهوه بعد از فرایند رست به صورت طبیعی کربن دی اکسید(co2) آزاد می کند .
+          </p>
         </div>
         <div>
-          <p>که هم به بسته بندی قهوه آسیب میزنه و هم به خود قهوه رست شدتون</p>
+          <p>
+            که هم به بسته بندی قهوه آسیب میزنه و هم به خود قهوه رست شدتون
+          </p>
         </div>
       </div>
     </section>
     <section ref="section_2" :class="{ 'in-view-port': sec2Vis }">
       <div>
         <div>
-          <p>سوپاپ یک طرفه گاز زادایی قهوه لا . سا کربن دی اکسید داخل بسته بندی قهوه رو خارج میکنه</p>
+          <p>
+            سوپاپ یک طرفه گاز زادایی قهوه لا . سا کربن دی اکسید داخل بسته بندی قهوه رو خارج میکنه
+          </p>
         </div>
         <div>
-          <p>و مانع ورود هوا به بسته بندی و اکسیداسیون میشه</p>
+          <p>
+            و مانع ورود هوا به بسته بندی و اکسیداسیون میشه
+          </p>
         </div>
       </div>
     </section>
@@ -39,21 +49,27 @@
       </div>
       <div class="image-section-text-content">
         <div class="content-box">
-          <h3 class="title">جلوگیری از انفجار بسته بندی :</h3>
+          <h3 class="title">
+            جلوگیری از انفجار بسته بندی :
+          </h3>
           <p class="text">
             با خارج کردن گاز های داخل بسته بندی مانند CO2 مانع انفجار و ترکیندن بسته بندی از فشار داخل می
             شود
           </p>
         </div>
         <div class="content-box">
-          <h3 class="title">خروج کنترل شده گاز :</h3>
+          <h3 class="title">
+            خروج کنترل شده گاز :
+          </h3>
           <p class="text">
             گاز از سوراخ کوچکی که در جلوی سوپاپ وجود دارد خارج می شود که مانع از تخلیه سریع و دفرمه شدن
             بسته بندی محصول می شود .
           </p>
         </div>
         <div class="content-box">
-          <h3 class="title">جلوگیری از انفجار بسته بندی :</h3>
+          <h3 class="title">
+            جلوگیری از انفجار بسته بندی :
+          </h3>
           <p class="text">
             با خارج کردن گاز های داخل بسته بندی مانند CO2 مانع انفجار و ترکیندن بسته بندی از فشار داخل می
             شود
@@ -71,28 +87,11 @@ const section_4 = ref(null);
 const valve_image = ref(null);
 
 const valve_usage_section = ref(null);
-const Nima = useTemplateRef("Nima");
 const { y, x, isScrolling, arrivedState, directions } = useScroll(document);
 
 const { left: toLeft, right: toRight, top: toTop, bottom: toBottom } = toRefs(
   directions
 );
-
-// const displayX = computed({
-//   get() {
-//     return x.value.toFixed(1)
-//   },
-//   set(val) {
-//     x.value = Number.parseFloat(val)
-//   },
-// })
-// const displayY = computed({
-//   get() {
-//     return y.value.toFixed(1)
-//   },
-//   set(val) {
-//     y.value = Number.parseFloat(val)
-//   },})
 
 const valveSec1Vis = useElementVisibility(valve_usage_section, {
   rootMargin: "-50% 0px -100% 0px"
@@ -163,7 +162,7 @@ onMounted(() => {
   transform: translate(-50%, -50%);
   width: 216px;
   z-index: 100;
-  transition: 1s;
+  transition: 1s,rotete 0.1s;
 }
 
 #valve-image.on-pack {

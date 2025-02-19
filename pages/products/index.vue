@@ -3,8 +3,8 @@
     <h2 class="page-title">
         {{ $t('products-page.page-title') }}
     </h2>
-    <ul id="products-and-valves-list">
-        <ProductsProductItem></ProductsProductItem>
+    <ul v-if="data" id="products-and-valves-list">
+        <ProductsProductItem  v-for="product in data" :product></ProductsProductItem>
     </ul>
   </main>
 </template>
@@ -13,6 +13,11 @@
 definePageMeta({
   name: "products"
 });
+
+const {data} = await useFetch("/api/products",{query:{lang:useI18n().locale.value}});
+console.log("data" , data);
+console.log("client :",useI18n().locale.value);
+
 </script>
 
 <style scoped>

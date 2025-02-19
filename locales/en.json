@@ -12,6 +12,9 @@
         "title": "Your coffee bag needs a LA.SA valve",
         "description": "The best way to keep coffee fresh"
     },
+    "home":{
+
+    },
     "aboutus": {
         "title": "About us"
     },
@@ -27,5 +30,26 @@
     },
     "products-page": {
         "page-title": "valves and products"
+    },
+    "product-item":{
+        "button-more":"view product",
+        "button-catalogue" : "download catalogue"
+    },
+    "product-page":{
+        "attention-to-call":"contact us for price inquiries and orders",
+        "attr-table":{
+            "title":"name",
+            "unit":"unit",
+            "value":"value"
+        }
+    },
+    "contact-page":{
+        "tell-title":"telephone communication method",
+        "social-title":"social media and messengers",
+        "message-title":"you can send message to us"
+    },
+    "blogs":{
+        "intro":"Read reliable articles and news about the valve manufacturing industry and the food and coffee industries here on Lhasa Blog and keep your information up to date."
     }
+    
 }
