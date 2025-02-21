@@ -1,8 +1,8 @@
 <template>
-    <main>
-        <h2 class="page-title-large">
+    <main itemscope itemtype="https://schema.org/Blog" >
+        <h1 class="page-title-large">
             {{ $t('menu.blog') }}
-        </h2>
+        </h1>
         <p class="blogs-intro">
             {{ $t('blogs.intro') }}
         </p>
@@ -13,6 +13,22 @@
                 </li>
                 <li>
                     <a href="">سوپاپ های لاسا</a>
+                </li>
+            </ul>
+        </section>
+        <section>
+            <ul id="blog-list">
+                <li>
+                    <BlogThumbBlog></BlogThumbBlog>
+                </li>
+                <li>
+                    <BlogThumbBlog></BlogThumbBlog>
+                </li>
+                <li>
+                    <BlogThumbBlog></BlogThumbBlog>
+                </li>
+                <li>
+                    <BlogThumbBlog></BlogThumbBlog>
                 </li>
             </ul>
         </section>
@@ -51,10 +67,38 @@ main {
     padding: 12px 0;
     display: flex;
     list-style:none;
+    align-self: center;
 
 }
 
 #categories-list li a {
-    padding: 6px var(--gap);
+    padding: 12px ;
+    font-size: 20px;
+    font-family: Kalameh-Medium;
+    color: var(--dark-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    transition: .3s;
+    border-radius: 50px;
+    min-height: 54px;
+    height: fit-content;
+}
+#categories-list li a:hover{
+    background: var(--dark-color);
+    color: var(--light-color);
+    padding-inline: var(--gap);
+    font-size: 16px;
+}
+section{
+    width: 100%;
+}
+#blog-list{
+    width: 100%;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: calc(var(--gap) * 2);
+    padding: 0;
 }
 </style>
