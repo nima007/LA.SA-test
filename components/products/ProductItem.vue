@@ -1,7 +1,7 @@
 <template>
   <li itemscope itemtype="https://schema.org/Product">
     <div class="product-image-wrapper">
-      <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
+      <img itemprop="image" :src="`/server/files${product.primaryImage}`" alt />
     </div>
     <div class="product-data-containter">
         <p itemprop="name" class="product-name">    {{product.name}}</p>
@@ -10,7 +10,7 @@
         class="product-description"
       >{{product.description}}</p>
       <div class="link-list">
-        <NuxtLinkLocale :to="{name:'product_page',params:{slug:'filter-valve'}}" itemprop="url" class="button">
+        <NuxtLinkLocale :to="{name:'product_page',params:{slug:product.slug}}" itemprop="url" class="button">
           {{$t('product-item.button-more')}}
         </NuxtLinkLocale>
         <NuxtLink class="button btn-secondary">

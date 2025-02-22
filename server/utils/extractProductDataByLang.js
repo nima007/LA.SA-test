@@ -12,5 +12,6 @@ export default function extractProductDataByLang(product, lang) {
     })),
     primaryImage: product.primaryImage,
     images: product.images,
+    slug:product.slug
   };
 }

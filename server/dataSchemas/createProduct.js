@@ -27,13 +27,17 @@ export default Joi.object({
         }),
       })
     ),
-  primaryImage: Joi.object({
-    name: Joi.string(),
-    size: Joi.number(),
-    type: Joi.string(),
-    lastModified: Joi.date(),
-    content: Joi.string(),
-  }).optional().allow(null),
+  primaryImage: Joi.array()
+  .items(
+    Joi.object({
+      name: Joi.string(),
+      size: Joi.number(),
+      type: Joi.string(),
+      lastModified: Joi.date(),
+      content: Joi.string(),
+    })
+  ).min(0)
+  .allow(null),
   images: Joi.array()
     .items(
       Joi.object({

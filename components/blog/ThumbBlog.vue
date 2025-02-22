@@ -2,7 +2,7 @@
 </script>
 
 <template>
-    <NuxtLink class="blog-item" itemscope itemtype="https://schema.org/Article">
+    <NuxtLinkLocale :to="{name:'blog_single_page',params:{'slug':'x'}}" class="blog-item"  itemscope itemtype="https://schema.org/Article">
         <article>
             <div class="blog-image-date-category-wrapper">
                 <img src="~/assets/images/blg.jpg" alt="">
@@ -17,7 +17,7 @@
                 <h2 itemprop="name">چرا از سوپاپ برای بسته بندی استفاده کنیم</h2>
             </div>
         </article>
-    </NuxtLink>
+    </NuxtLinkLocale>
 </template>
 <style scoped>
 .blog-item {
@@ -27,6 +27,8 @@
     width: 100%;
     height: fit-content;
     transition: .3s;
+    text-decoration: none;
+    color: var(--dark-color);
 }
 
 .blog-item:hover {

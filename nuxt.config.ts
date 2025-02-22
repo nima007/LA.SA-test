@@ -2,7 +2,10 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
   css:['~/assets/main.css'],
-  modules: ['@vueuse/nuxt', '@nuxtjs/i18n'],
+  modules: ['@vueuse/nuxt', '@nuxtjs/i18n','nuxt-file-storage'],
+  fileStorage:{
+    mount: 'F:/WEB-TEST/lasaTest/server/files',
+  },
   devtools: {
     enabled: true,
 
@@ -33,9 +36,16 @@ export default defineNuxtConfig({
     baseUrl:'localhsot:3000'
   },
   runtimeConfig:{
-    mongoose_url:'mongodb://localhost:27017/LASA_db'
+    mongoose_url:'mongodb://localhost:27017/LASA_db',
+    fileStoreMount:'F:/WEB-TEST/lasaTest/server/files'
   },
   nitro:{
-    plugins:['~/server/db/index.js']
+    plugins:['~/server/db/index.js'],
+    storage:{
+      productsImages:{
+        driver:'fs',
+        base:'public/uploads/products_images'
+      }
+    }
   }
 })

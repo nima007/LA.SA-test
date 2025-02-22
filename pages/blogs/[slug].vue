@@ -11,9 +11,13 @@
                 <span>سوپاپ های لاسا</span>
             </div>
         </div>
+        <img class="blog-image" itemprop="image" src="~/assets/images/blg.jpg" alt="">
     </main>
 </template>
 <script setup>
+definePageMeta({
+    name:'blog_single_page'
+})
 </script>
 <style scoped>
 main {
@@ -21,6 +25,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-inline: var(--padding-inline);
 }
 .post-title{
     font-size: 46px;
@@ -52,5 +57,9 @@ main {
 .blog-data-row .spliter{
     width: 1px ;
     background: var(--dark-color);
+}
+.blog-image{
+    width: 100%;
+    margin-block: 128px 64px;
 }
 </style>
