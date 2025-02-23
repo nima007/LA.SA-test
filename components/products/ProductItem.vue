@@ -1,7 +1,7 @@
 <template>
   <li itemscope itemtype="https://schema.org/Product">
     <div class="product-image-wrapper">
-      <img itemprop="image" :src="`/server/files${product.primaryImage}`" alt />
+      <img itemprop="image" :src="product.primaryImage" alt />
     </div>
     <div class="product-data-containter">
         <p itemprop="name" class="product-name">    {{product.name}}</p>

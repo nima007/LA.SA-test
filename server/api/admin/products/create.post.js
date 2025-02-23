@@ -6,9 +6,15 @@ export default defineEventHandler(async (event) => {
   if (data) {
     console.log("data after validation", data);
     const primaryFile = data.primaryImage
-    data.primaryImage =  await saveProductImage(data.name.en.trim().replaceAll(" ", "-").normalize(), primaryFile);
+    data.primaryImage =  await(async()=>{
+      let x = await saveProductImage(normalFileName(data.name.en), primaryFile)
+      console.log("x : ",x);
+      console.log("x0 : ",x[0]);
+      
+      return x[0];
+    })();
     // const imageListFiles =  
-    console.log("prim : ",data.primaryImage);
+    console.log("!!!!!!!!prim : ",data);
     
     const product = new Product(data);
     await product.save();
@@ -17,3 +23,7 @@ export default defineEventHandler(async (event) => {
     return true;
   }
 });
+
+function normalFileName(name) {
+  return name.trim().replaceAll(" ", "-").normalize()
+}

@@ -4,7 +4,7 @@ export default defineNuxtConfig({
   css:['~/assets/main.css'],
   modules: ['@vueuse/nuxt', '@nuxtjs/i18n','nuxt-file-storage'],
   fileStorage:{
-    mount: 'F:/WEB-TEST/lasaTest/server/files',
+    mount:  process.env.storeMountPath,    
   },
   devtools: {
     enabled: true,
@@ -37,7 +37,6 @@ export default defineNuxtConfig({
   },
   runtimeConfig:{
     mongoose_url:'mongodb://localhost:27017/LASA_db',
-    fileStoreMount:'F:/WEB-TEST/lasaTest/server/files'
   },
   nitro:{
     plugins:['~/server/db/index.js'],

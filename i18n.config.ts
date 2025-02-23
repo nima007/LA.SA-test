@@ -1,7 +1,7 @@
 import fa from './locales/fa.json'
 import en from './locales/en.json'
-export default defineI18nConfig(() => {
-    return {
+export default defineI18nConfig(() => ({
+  
         legacy: false,
         locales: [
             {
@@ -24,8 +24,8 @@ export default defineI18nConfig(() => {
         messages: {
            fa,en
         },
-    }
-})
+  
+}))
 // "fa":{
 //     "a":"نیما"
 // },

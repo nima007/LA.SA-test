@@ -3,7 +3,7 @@ export default defineEventHandler(async (event) => {
     const storage = useStorage("productImages");
     console.log("key" , key);
     const decodedKey = decodeURI(key)
-    console.log("Dkey" , decodedKey);
+    console.log("________________Dkey" , decodedKey);
     const image = await storage.getItemRaw(decodedKey);
     return image || createError({ statusCode: 404, message: "image not found" });
 })

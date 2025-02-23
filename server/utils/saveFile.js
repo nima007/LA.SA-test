@@ -7,18 +7,19 @@ export async function saveFile(baseName, file, dir="/temp") {
   const fileName = `${baseName}_${Date.now()}`;
   const savedFile = await storeFileLocally(file, fileName, dir);
   return savedFile
-  `${dir}/${savedFile}`;
+  // `${dir}/${savedFile}`;
 }
 
-export async function saveProductImage(baseName,images,dir=null) {
+export async function saveProductImage(baseName,images) {
   const filesNameArray = [];
   let counter = 0;
   for (const file of images) {
     counter++;
-    let storedFile =saveFile(baseName,file,dir)
+    let storedFile =await saveFile(baseName,file)
+    console.log("storedFile",storedFile);
     const tempFileAddress = path.join(
       process.cwd(),
-      "server/files/products_images/",
+      "server/files/temp/",
       storedFile
     );
     const imageKey = storedFile;
