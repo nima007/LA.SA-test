@@ -7,19 +7,13 @@ export default defineEventHandler(async (event) => {
     console.log("data after validation", data);
     const primaryFile = data.primaryImage
     data.primaryImage =  await(async()=>{
-      let x = await saveProductImage(normalFileName(data.name.en), primaryFile)
-      console.log("x : ",x);
-      console.log("x0 : ",x[0]);
-      
+      let x = await saveProductImage(normalFileName(data.name.en), primaryFile);      
       return x[0];
     })();
-    // const imageListFiles =  
-    console.log("!!!!!!!!prim : ",data);
-    
+    data.images =  await saveProductImage(normalFileName(data.name.en), data.images );
     const product = new Product(data);
     await product.save();
     console.log('prd : ',product);
-    
     return true;
   }
 });

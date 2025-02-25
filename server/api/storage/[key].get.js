@@ -1,6 +1,6 @@
 export default defineEventHandler(async (event) => {
     const key = getRouterParam(event, 'key');
-    const storage = useStorage("productImages");
+    const storage = useStorage("productsImages");
     console.log("key" , key);
     const decodedKey = decodeURI(key)
     console.log("________________Dkey" , decodedKey);
