@@ -11,8 +11,11 @@
 
 <script setup>
 
-
-const { data,error } = await useAsyncData("getIndex", () => 
+definePageMeta({
+  name: "admin_dashboard_page",
+  layout: "admin"
+})
+const { data, error } = await useAsyncData("getIndex", () =>
   $fetch("/api/InData", {
     method: "get",
     query: { lang: useI18n().locale.value }

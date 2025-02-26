@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <Menu></Menu>
-    <NuxtPage />
-    <Footer />
+    <NuxtLayout></NuxtLayout>
   </div>
 </template>
 <script setup>

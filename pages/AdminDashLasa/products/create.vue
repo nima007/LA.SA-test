@@ -59,7 +59,8 @@
 <script setup>
 definePageMeta({
     title: "ادمین - محصولات",
-    name: "admin_products_create"
+    name: "admin_products_create",
+    layout:"admin"
 });
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage()
