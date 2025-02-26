@@ -31,7 +31,7 @@
                     </label>
                     <ul class="files-in-upload">
                         <li v-for="file in PrimaryImageFile">
-                            <img  :src="(file.content)" alt="">
+                            <img :src="(file.content)" alt="">
 
                         </li>
                     </ul>
@@ -47,7 +47,7 @@
                     </label>
                     <ul class="files-in-upload">
                         <li v-for="file in imagesFiles">
-                            <img  :src="(file.content)" alt="">
+                            <img :src="(file.content)" alt="">
                         </li>
                     </ul>
                 </div>
@@ -79,6 +79,7 @@ const product = ref({
 })
 function saveProduct() {
     product.value.primaryImage = PrimaryImageFile.value
+    product.value.images = imagesFiles.value
     $fetch("/api/admin/products/create", {
         method: "POST",
         body: product.value
@@ -106,20 +107,24 @@ function saveProduct() {
 .fileLabel input {
     display: none;
 }
-.files-in-upload{
+
+.files-in-upload {
     width: 100%;
     display: flex;
 }
-.files-in-upload li{
+
+.files-in-upload li {
     display: flex;
     width: 200px;
     height: 200px;
     border: 1px solid;
 }
-.files-in-upload li img{
+
+.files-in-upload li img {
     max-width: 100%;
     max-height: 100%;
 }
+
 main {
     padding-top: 150px;
 }

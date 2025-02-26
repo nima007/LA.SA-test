@@ -1,3 +1,4 @@
+import { normalFileName } from "~/server/utils/saveFile.js";
 import productCreateSchema from "../../../dataSchemas/createProduct.js";
 import Product from "../../../db/models/product.model.js";
 export default defineEventHandler(async (event) => {
@@ -18,6 +19,3 @@ export default defineEventHandler(async (event) => {
   }
 });
 
-function normalFileName(name) {
-  return name.trim().replaceAll(" ", "-").normalize()
-}

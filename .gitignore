@@ -24,3 +24,4 @@ logs
 !.env.example
 server/files
 server/filesnull/
+public/uploads/products_images/

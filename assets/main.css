@@ -93,6 +93,7 @@ form textarea {
     /* color: #fff; */
     font-family: Kalameh-Regular;
     font-size: 16px;
+    padding-inline-start: 16px;
 }
 footer form input:not([type="checkbox"]):not([type="radio"]),
 footer form select,

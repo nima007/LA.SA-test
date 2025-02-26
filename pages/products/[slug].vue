@@ -41,23 +41,8 @@
     </section>
     <section id="product-images-container" class="no-padding">
       <ul>
-        <li>
-          <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
-        </li>
-        <li>
-          <img itemprop="image" src="~/assets/images/valves/valveFront.png" alt />
-        </li>
-        <li>
-          <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
-        </li>
-        <li>
-          <img itemprop="image" src="~/assets/images/valves/valveFront.png" alt />
-        </li>
-        <li>
-          <img itemprop="image" src="~/assets/images/valves/valveBack.png" alt />
-        </li>
-        <li>
-          <img itemprop="image" src="~/assets/images/valves/valveFront.png" alt />
+        <li v-for="image in data.images">
+          <img itemprop="image" :src="image" alt />
         </li>
       </ul>
     </section>
@@ -139,10 +124,11 @@ main * {
 
 #product-data-container {
   padding-top: calc(var(--menu-height) * 1.8);
-  height: 300vh;
   display: flex;
+  height: fit-content;
   flex-direction: column;
   gap: var(--gap);
+  padding-bottom: calc(var(--menu-height) * 3);
 }
 
 #product-data-container>*:not(.no-padding) {

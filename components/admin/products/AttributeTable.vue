@@ -18,6 +18,7 @@
             <AdminProductsAttributeRow 
             v-for="(att,index) in attributesModel" :key="index"
             :attData="att"
+            @removeAtt="removeAttribute(index)"
             />
         </tbody>
     </table>
@@ -41,6 +42,10 @@ class attributeModelMap {
             en: ""
         }
     }
+}
+function removeAttribute(index) {
+    console.log("try to remove : ", index);
+    attributesModel.value.splice(index,1)
 }
 // const attributes = ref([new attributeModelMap()])
 </script>

@@ -8,7 +8,7 @@
       <p
         itemprop="description"
         class="product-description"
-      >{{product.description}}</p>
+      >{{product.description?.slice(0,100)}}...</p>
       <div class="link-list">
         <NuxtLinkLocale :to="{name:'product_page',params:{slug:product.slug}}" itemprop="url" class="button">
           {{$t('product-item.button-more')}}
@@ -53,6 +53,9 @@ li {
 .product-image-wrapper > img {
   width: 50%;
   transform: translateY(40%);
+}
+.product-data-containter{
+  flex: 1;
 }
 .product-name {
   font-size: 32px;

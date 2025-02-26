@@ -29,3 +29,6 @@ export async function saveProductImage(baseName,images) {
   }
   return filesNameArray;
 }
+export function normalFileName(name) {
+  return name.trim().replaceAll(" ", "-").normalize()
+}

@@ -39,6 +39,7 @@ main{
     display: flex;
     flex-direction: column;
     align-items: start;
+    gap: calc(var(--gap) * 2);
 }
 @media (max-width:980px) {
   #products-and-valves-list{
