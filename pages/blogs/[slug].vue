@@ -1,6 +1,6 @@
 <template>
-    <main itemscope itemtype="https://schema.org/Article">
-        <h1 itemprop="headline" class="post-title">Blog Post Title</h1>
+    <main itemscope itemtype="https://schema.org/Article" >
+         <h1 itemprop="headline" class="post-title">Blog Post Title</h1>
         <div class="blog-data-row">
             <div class="date-chips chips">
                 <img src="~/assets/images/cal.svg" alt="">
