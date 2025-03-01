@@ -10,7 +10,6 @@
 </template>
 
 <script setup>
-
 definePageMeta({
   name: "admin_dashboard_page",
   layout: "admin"

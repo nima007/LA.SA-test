@@ -3,9 +3,9 @@ import path from 'path';
 
 const storageProductsImage = useStorage('productsImages');
 
-export async function saveFile(baseName, file, dir="/temp") {
+export async function saveFile(baseName, file) {
   const fileName = `${baseName}_${Date.now()}`;
-  const savedFile = await storeFileLocally(file, fileName, dir);
+  const savedFile = await storeFileLocally(file, fileName);
   return savedFile
   // `${dir}/${savedFile}`;
 }
@@ -19,7 +19,8 @@ export async function saveProductImage(baseName,images) {
     console.log("storedFile",storedFile);
     const tempFileAddress = path.join(
       process.cwd(),
-      "server/files/temp/",
+      // "server/files/temp/",
+      useRuntimeConfig().relStoreMountPath,
       storedFile
     );
     const imageKey = storedFile;

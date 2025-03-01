@@ -75,22 +75,7 @@ function removeFromNewImages(index) {
 function removeFromOldImages(index) {
     product.value.oldImages.splice(index,1)
 }
-const product = ref(null
-    // {
-    // name: {
-    //     fa: "",
-    //     en: ""
-    // }, description: {
-    //     fa: "",
-    //     en: ""
-    // }, attributes: [
-
-    // ],
-    // images: [],
-    // primaryImage: {},
-    // catalogue: []
-    // }
-)
+const product = ref(null)
 const route = useRoute()
 const { data } = await useFetch(`/api/admin/products/product/${route.params.id}`, { method: 'get' })
 if (data) {
