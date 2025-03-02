@@ -67,6 +67,7 @@ definePageMeta({
     name: "admin_products_update",
     layout: "admin"
 });
+const router = useRouter()
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage();
 function removeFromNewImages(index) {
@@ -96,6 +97,12 @@ function updateProduct() {
     }).then(res => {
         if (res.ok) {
             console.log("Product update successfully")
+            alert("محصول با موفقیت بروزرسانی شد");
+            router.push({name:"admin_products_page"})
+        }else{
+            alert("خطا در بروز رسانی محصول ")
+            // console.log(res);
+            
         }
     })
 }

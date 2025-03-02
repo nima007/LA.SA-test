@@ -14,7 +14,7 @@ body {
     color: #000;
 }
 
-div#app>main>section:not(.no-padding) {
+#default-layout>main>section:not(.no-padding) {
     padding-inline: var(--padding-inline);
 }
 
