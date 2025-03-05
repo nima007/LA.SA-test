@@ -47,9 +47,8 @@ export default defineEventHandler(async (event) => {
   } catch (e) {
     console.log("خطا در بروز رسانی");
     createError({
-      statusCode:500,
-      message:"خطا در بروزرسانی محصول : "+ e.message
+      statusCode: 500,
+      message: "خطا در بروزرسانی محصول : " + e.message
     })
   }
-  // console.log('prd : ', product);
 });

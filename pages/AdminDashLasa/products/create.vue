@@ -30,9 +30,8 @@
                         <p>افزودن تصویر اصلی</p>
                     </label>
                     <ul class="files-in-upload">
-                        <li v-for="file in PrimaryImageFile">
+                        <li v-for="(file, index) in PrimaryImageFile" :key="index">
                             <img :src="(file.content)" alt="">
-
                         </li>
                     </ul>
                 </div>
@@ -46,7 +45,7 @@
                         <p>افزودن تصویر به لیست تصاویر</p>
                     </label>
                     <ul class="files-in-upload">
-                        <li v-for="file in imagesFiles">
+                        <li v-for="(file, index) in imagesFiles" :key="index">
                             <img :src="(file.content)" alt="">
                         </li>
                     </ul>
@@ -60,8 +59,9 @@
 definePageMeta({
     title: "ادمین - محصولات",
     name: "admin_products_create",
-    layout:"admin"
+    layout: "admin"
 });
+const localeRoute = useLocaleRoute()
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage()
 const product = ref({
@@ -76,7 +76,6 @@ const product = ref({
     ],
     images: [],
     primaryImage: {},
-    // catalogue: []
 })
 function saveProduct() {
     product.value.primaryImage = PrimaryImageFile.value
@@ -85,8 +84,15 @@ function saveProduct() {
         method: "POST",
         body: product.value
     }).then(res => {
-        if (res.ok) {
-            console.log("Product created successfully")
+        if (res === true) {
+            alert("محصول با موفقیت ثبت شد");
+            const router = localeRoute({
+                name: "admin_products_page",
+            });
+            navigateTo(router.fullPath)
+        } else {
+            alert("خطا در ثبت محصول ")
+            console.log(res);
         }
     })
 }

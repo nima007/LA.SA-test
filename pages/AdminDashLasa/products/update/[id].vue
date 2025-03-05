@@ -30,7 +30,7 @@
                         <p>افزودن تصویر اصلی</p>
                     </label>
                     <ul class="files-in-upload">
-                        <li v-for="file in PrimaryImageFile">
+                        <li v-for="(file, index) in PrimaryImageFile" :key="index">
                             <img :src="(file.content)" alt="">
                         </li>
                     </ul>
@@ -44,13 +44,13 @@
                         <p>افزودن تصویر به لیست تصاویر</p>
                     </label>
                     <ul class="files-in-upload">
-                        <li v-for="(file,index) in imagesFiles">
+                        <li v-for="(file, index) in imagesFiles" :key="index">
                             <button class="remove" @click="removeFromNewImages(index)"></button>
                             <img :src="(file.content)" alt="">
                         </li>
                     </ul>
                     <ul id="old-images-list">
-                        <li v-for="(image,index) in product.oldImages">
+                        <li v-for="(image, index) in product.oldImages" :key="index">
                             <button class="remove" @click="removeFromOldImages(index)"></button>
                             <img :src="image" alt="">
                         </li>
@@ -62,19 +62,20 @@
     </main>
 </template>
 <script setup>
+const localeRoute = useLocaleRoute()
+
 definePageMeta({
     title: "ادمین - محصولات",
     name: "admin_products_update",
     layout: "admin"
 });
-const router = useRouter()
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage();
 function removeFromNewImages(index) {
-    imagesFiles.value.splice(index,1)
+    imagesFiles.value.splice(index, 1)
 }
 function removeFromOldImages(index) {
-    product.value.oldImages.splice(index,1)
+    product.value.oldImages.splice(index, 1)
 }
 const product = ref(null)
 const route = useRoute()
@@ -84,25 +85,25 @@ if (data) {
     product.value.oldImages = product.value.images;
     product.value.images = [];
     console.log(product.value);
-    
+
 }
 function updateProduct() {
     product.value.primaryImage = PrimaryImageFile.value
     product.value.images = imagesFiles.value;
-    // product.value.attributes=[]
-    // delete product.value._id
     $fetch(`/api/admin/products/update/${route.params.id}`, {
         method: "put",
         body: product.value
     }).then(res => {
-        if (res.ok) {
+        if (res === true) {
             console.log("Product update successfully")
             alert("محصول با موفقیت بروزرسانی شد");
-            router.push({name:"admin_products_page"})
-        }else{
+            const router = localeRoute({
+                name: "admin_products_page",
+            });
+            navigateTo(router.fullPath)
+        } else {
             alert("خطا در بروز رسانی محصول ")
-            // console.log(res);
-            
+            console.log(res);
         }
     })
 }
@@ -125,28 +126,32 @@ function updateProduct() {
     display: none;
 }
 
-.files-in-upload,#old-images-list {
+.files-in-upload,
+#old-images-list {
     width: 100%;
     display: flex;
 }
 
-.files-in-upload li,#old-images-list li {
+.files-in-upload li,
+#old-images-list li {
     display: flex;
     width: 200px;
     height: 200px;
     border: 1px solid;
     position: relative;
 }
-.files-in-upload li .remove,#old-images-list li  .remove{
+
+.files-in-upload li .remove,
+#old-images-list li .remove {
     position: absolute;
     background: red;
     border-radius: 6px;
 }
+
 .files-in-upload li .remove::before,
 .files-in-upload li .remove::after,
-#old-images-list li  .remove::before,
-#old-images-list li  .remove::after
-{
+#old-images-list li .remove::before,
+#old-images-list li .remove::after {
     width: 50%;
     height: 3px;
     background: #fff;
@@ -155,18 +160,19 @@ function updateProduct() {
     position: absolute;
     transform: rotate(45deg);
 }
+
 .files-in-upload li .remove::after,
-#old-images-list li  .remove::before{
+#old-images-list li .remove::before {
     transform: rotate(-45deg);
 
 }
-.files-in-upload li img ,#old-images-list li img{
+
+.files-in-upload li img,
+#old-images-list li img {
     max-width: 100%;
     max-height: 100%;
 }
-.files-in-upload li,#old-images-list li {
 
-}
 form {
     width: 100%;
 }
@@ -193,5 +199,7 @@ form>section>div {
 form>section>div:first-of-type {
     border-inline-end: 1px solid #000;
 }
-
 </style>
+<!-- .files-in-upload li,#old-images-list li {
+
+} -->
