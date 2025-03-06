@@ -180,3 +180,11 @@ table > tbody td{
     padding-bottom: 20vh;
 
 }
+#admin-layout form input:not([type="checkbox"]):not([type="radio"]),
+#admin-layout form textarea{
+    border-color: #000 !important;
+}
+#admin-layout form textarea{
+    height:unset !important;
+    min-height: 200px;
+}

@@ -9,6 +9,10 @@
                     <li>
                         <NuxtLinkLocale :to="{name:'admin_products_page'}">محصولات</NuxtLinkLocale>
                     </li>
+                    <li>
+                        <NuxtLinkLocale :to="{name:'admin_dash_blogs_page'}">بلاگ</NuxtLinkLocale>
+                    </li>
+                    
                 </ul>
             </nav>
         </header>
