@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  css: ['~/assets/main.css'],
+  css: ['~/assets/main.css','~/assets/tp-style.css'],
   modules: ['@vueuse/nuxt', '@nuxtjs/i18n', 'nuxt-file-storage'],
   fileStorage: {
     mount: process.env.storeMountPath,
@@ -46,6 +46,10 @@ export default defineNuxtConfig({
       productsImages: {
         driver: 'fs',
         base: 'public/uploads/products_images'
+      },
+      blogFile: {
+        driver: 'fs',
+        base: 'public/uploads/blog'
       }
     }
   }

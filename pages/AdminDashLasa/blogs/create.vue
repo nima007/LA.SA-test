@@ -17,9 +17,15 @@ const blog = ref({
         fa: "",
         en: ""
     },
-    image: "",
+    image: null,
     slug: ""
 });
+const BlogState = useState('blog_state')
+if(!BlogState.value){
+    BlogState.value=blog.value
+}else{
+    blog.value = BlogState.value
+}
 </script>
 <template>
     <main>

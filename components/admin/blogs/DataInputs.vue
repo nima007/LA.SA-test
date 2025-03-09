@@ -1,9 +1,13 @@
 <script setup>
 const blogModel = defineModel();
 const { handleFileInput: handleImage, files: imageFiles } = useFileStorage({ clearOldFiles: true })
+console.log("imageFiles: ", imageFiles);
+
 watch(imageFiles, () => {
-    blogModel.image = imageFiles.value
-})
+    console.log("ChangeimageFiles: ", imageFiles);
+
+    blogModel.value.image = imageFiles.value
+}, { deep: true })
 
 </script>
 <template>
@@ -14,7 +18,7 @@ watch(imageFiles, () => {
                 <label class="fileLabel" for="image-input">
                     <input type="file" id="image-input" @input="handleImage">
                     <p>افزودن تصویر</p>
-                    <img v-for="(file, index) in imageFiles" :key="index" :src="(file.content)" alt="">
+                    <img v-for="(file, index) in blogModel.image" :key="index" :src="(file.content)" alt="">
                 </label>
             </div>
         </section>
@@ -24,7 +28,7 @@ watch(imageFiles, () => {
                 <label>
                     <p>افزودن تصویر</p>
                     <select style="width: auto;" name="" id="">
-                        <option value="" disabled selected>  یک دسته بندی انتخاب کنید</option>
+                        <option value="" disabled selected> یک دسته بندی انتخاب کنید</option>
                     </select>
                 </label>
             </div>
@@ -41,7 +45,7 @@ watch(imageFiles, () => {
                     <p>محتوا</p>
                     <textarea v-model="blogModel.content.fa" placeholder="محتوا" />
                 </label>
-                <button>ویرایش محتوا</button>
+                <NuxtLinkLocale :to="{ name: 'admin-blog-editor', query: { 'lang': 'fa' } }">ویرایش محتوا</NuxtLinkLocale>
             </div>
             <div class="blogModel-content-language">
                 <h3>eng</h3>
@@ -53,7 +57,8 @@ watch(imageFiles, () => {
                     <p>محتوا</p>
                     <textarea v-model="blogModel.content.en" placeholder="محتوا" />
                 </label>
-                <button>ویرایش محتوا</button>
+                <NuxtLinkLocale :to="{ name: 'admin-blog-editor', query: { 'lang': 'en' } }">ویرایش محتوا</NuxtLinkLocale>
+
             </div>
         </section>
 
@@ -68,24 +73,29 @@ section {
     flex-direction: column;
 }
 
-section > *:not(h2){
+section>*:not(h2) {
     margin-inline: 16px;
 }
-section > div{
+
+section>div {
     padding-bottom: 16px;
 }
-section > div:not(:last-child){
+
+section>div:not(:last-child) {
     border-bottom: 1px solid #0003;
 }
-h2{
-    border-inline-start: 5px solid ;
+
+h2 {
+    border-inline-start: 5px solid;
     padding-inline-start: 16px;
 }
-h3{
-    border-bottom: 2px solid ;
+
+h3 {
+    border-bottom: 2px solid;
     padding: 8px 0;
     width: fit-content;
 }
+
 .blog-content-language {
     border-bottom: 1px solid #000;
     padding: 16px;

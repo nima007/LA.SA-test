@@ -1,0 +1,11 @@
+.has-focus {
+  box-shadow: 0 0 0 4px #0003;
+}
+.tiptap{
+  min-height: 100%;
+  max-width: 900px;
+  margin: auto;
+}
+.tiptap img{
+  max-width: 100%;
+}
