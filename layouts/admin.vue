@@ -12,6 +12,9 @@
                     <li>
                         <NuxtLinkLocale :to="{name:'admin_dash_blogs_page'}">بلاگ</NuxtLinkLocale>
                     </li>
+                    <li>
+                        <NuxtLinkLocale :to="{name:'admin_setting_page'}">تنظیمات</NuxtLinkLocale>
+                    </li>
                     
                 </ul>
             </nav>

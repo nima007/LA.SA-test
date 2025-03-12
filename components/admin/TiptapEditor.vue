@@ -272,6 +272,9 @@ onMounted(() => {
     flex-wrap: wrap;
     gap: 8px;
     border-bottom: 1px solid;
+    position: sticky;
+    top: 0;
+    background: var(--light-color);
 }
 #fixed-menu > .control-group > .button-group{
     display: flex;

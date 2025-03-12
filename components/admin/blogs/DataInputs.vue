@@ -18,7 +18,7 @@ watch(imageFiles, () => {
                 <label class="fileLabel" for="image-input">
                     <input type="file" id="image-input" @input="handleImage">
                     <p>افزودن تصویر</p>
-                    <img v-for="(file, index) in blogModel.image" :key="index" :src="(file.content)" alt="">
+                    <img v-for="(file, index) in blogModel.image" :key="index" :src="(file.content)||file" alt="">
                 </label>
             </div>
         </section>

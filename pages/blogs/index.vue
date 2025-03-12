@@ -1,5 +1,5 @@
 <template>
-    <main itemscope itemtype="https://schema.org/Blog" >
+    <main itemscope itemtype="https://schema.org/Blog">
         <h1 class="page-title-large">
             {{ $t('menu.blog') }}
         </h1>
@@ -17,19 +17,11 @@
             </ul>
         </section>
         <section>
-            <ul id="blog-list">
-                <li>
-                    <BlogThumbBlog></BlogThumbBlog>
+            <ul v-if="blogsList" id="blog-list">
+                <li v-for="blog in blogListFilterd">
+                    <BlogThumbBlog :blog-data="blog"></BlogThumbBlog>
                 </li>
-                <li>
-                    <BlogThumbBlog></BlogThumbBlog>
-                </li>
-                <li>
-                    <BlogThumbBlog></BlogThumbBlog>
-                </li>
-                <li>
-                    <BlogThumbBlog></BlogThumbBlog>
-                </li>
+
             </ul>
         </section>
     </main>
@@ -37,6 +29,14 @@
 <script setup>
 definePageMeta({
     name: 'blogs_index'
+})
+const { data: blogsList } = await useFetch('/api/blogs', { query: { lang: useI18n().locale.value } });
+console.log("blogList", blogsList);
+
+const lang = useI18n().locale;
+let x = `blog.title[${lang.value}]`
+const blogListFilterd = computed(() => {
+    return blogsList.value.filter(blog => blog.title[lang.value])
 })
 </script>
 <style scoped>
@@ -66,13 +66,13 @@ main {
     overflow-x: auto;
     padding: 12px 0;
     display: flex;
-    list-style:none;
+    list-style: none;
     align-self: center;
 
 }
 
 #categories-list li a {
-    padding: 12px ;
+    padding: 12px;
     font-size: 20px;
     font-family: Kalameh-Medium;
     color: var(--dark-color);
@@ -84,21 +84,33 @@ main {
     min-height: 54px;
     height: fit-content;
 }
-#categories-list li a:hover{
+
+#categories-list li a:hover {
     background: var(--dark-color);
     color: var(--light-color);
     padding-inline: var(--gap);
     font-size: 16px;
 }
-section{
+
+section {
     width: 100%;
 }
-#blog-list{
+
+#blog-list {
     width: 100%;
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: calc(var(--gap) * 2);
     padding: 0;
+    @media (max-width: 980px) {
+        grid-template-columns: repeat(2, 1fr);
+        @media (max-width: 580px) {
+            grid-template-columns: repeat(1, 1fr);
+        }
+    }
+
+    
+
 }
 </style>

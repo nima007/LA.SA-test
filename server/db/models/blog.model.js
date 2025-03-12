@@ -7,7 +7,7 @@ const blogSchema = new Schema(
       unique: true,
       index: true,
     },
-    name: {
+    title: {
       fa: String,
       en: String,
     },
@@ -40,7 +40,7 @@ blogSchema.pre("save", async function (next) {
 
 async function slugGenerator(doc) {
   console.log("updating slug");
-  const baseSlug = doc.name.fa.trim().replaceAll(" ", "-").normalize();
+  const baseSlug = doc.title.fa.trim().replaceAll(" ", "-").normalize();
   const count = await mongoose.models.Blog.countDocuments({
     name: doc.name,
   });

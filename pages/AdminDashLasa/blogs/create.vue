@@ -21,10 +21,22 @@ const blog = ref({
     slug: ""
 });
 const BlogState = useState('blog_state')
-if(!BlogState.value){
-    BlogState.value=blog.value
-}else{
+if (!BlogState.value) {
+    BlogState.value = blog.value
+} else {
     blog.value = BlogState.value
+}
+async function saveBlog() {
+    let res = await useFetch("/api/admin/blogs",
+        {
+            method: "post",
+            body: blog.value
+        }
+    )
+    console.log("blog res ", res);
+    console.log("blog res error", res.error);
+    console.log(useError(res.error))
+
 }
 </script>
 <template>

@@ -1,11 +1,8 @@
 <template>
   <main>
-    <h1>Admin - dash</h1>
-    data : {{ data }}
-    <br>
-    error : {{ !!error }}
-    <br>
-    <NuxtLinkLocale :to="{ name: 'admin_products_create' }">ایجاد محصول</NuxtLinkLocale>
+    <h1>به داشبورد ادمین خوش آمدید</h1>
+    <p>از منوی سمت راست به تنظیمات مورد نظر وارد شوید</p>
+    <p>&#x26A0; به خاطر بسپارید صفحهات ادمین در گوشی دسترسی پذیر نیستند !</p>
   </main>
 </template>
 

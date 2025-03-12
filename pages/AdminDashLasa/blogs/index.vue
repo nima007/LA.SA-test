@@ -4,23 +4,11 @@ definePageMeta({
     name: "admin_dash_blogs_page",
     layout: "admin"
 })
-const blogs = ref([
-    {
-        title: "عنوان",
-        description: "توضیحات",
-        image: "https://picsum.photos/200/300",
-        date: "1400/01/01",
-        slug: "slug"
-    },
-    {
-        title: "عنوان",
-        description: "توضیحات",
-        image: "https://picsum.photos/200/200",
-        date: "1400/01/01",
-        slug: "slug1"
-    },
-]);
+useState('blog_state').value = null
 
+const {data:blogData} = await useFetch("/api/admin/blogs",{
+    method:'get'
+})
 </script>
 <template>
     <main id="blog-page">
@@ -31,12 +19,12 @@ const blogs = ref([
             <div class="section-title">
                 <h2>لیست بلاگ ها </h2>
             </div>
-            <ul id="blogs-list">
-                <li v-for="blog in blogs" :key="blog.slug">
+            <ul v-if="blogData" id="blogs-list" >
+                <li v-for="blog in blogData" :key="blog.slug">
                     <img :src="blog.image" alt="">
-                    <h3>{{ blog.title }}</h3>
-                    <p>{{ blog.description }}</p>
-                    <p>{{ blog.date }}</p>
+                    <h3>{{ blog.title.fa||blog.title.en }}</h3>
+                    <p>{{ blog.description.fa||blog.description.en  }}</p>
+                    <p>{{ new Date(blog.createdAt).toLocaleString('fa-IR') }}</p>
                     <NuxtLinkLocale :to="{ name: 'admin_dash_blogs_update_page', params: { slug: blog.slug } }">ویرایش
                     </NuxtLinkLocale>
                 </li>
@@ -57,8 +45,14 @@ const blogs = ref([
 
 #blogs-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, .5fr));
     gap: 16px;
     list-style: none;
+}
+#blogs-list > li{
+    overflow: hidden;
+}
+#blogs-list > li img{
+    max-width: 100%;
 }
 </style>

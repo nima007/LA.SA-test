@@ -5,35 +5,63 @@
       <img id="footer-logo" src="~/assets/images/LASA_Logo.png" alt />
 
       <div class="first">
-        <p class="heading-title">{{$t('footer.contact-us')}}</p>
+        <p class="heading-title">{{ $t('footer.contact-us') }}</p>
         <form @submit.prevent>
           <label for>
-            <span>{{$t('footer.name')}}</span>
+            <span>{{ $t('footer.name') }}</span>
             <input type="text" />
           </label>
           <label for>
-            <span>{{$t('footer.company')}}</span>
+            <span>{{ $t('footer.company') }}</span>
             <input type="text" />
           </label>
           <label for>
-            <span>{{$t('footer.phone')}}</span>
+            <span>{{ $t('footer.phone') }}</span>
             <vue-tel-input v-model="mobileNumber" mode="international" />
           </label>
           <label for>
-            <span>{{$t('footer.email')}}</span>
+            <span>{{ $t('footer.email') }}</span>
             <input type="email" />
           </label>
           <label for>
-            <span>{{$t('footer.message')}}</span>
+            <span>{{ $t('footer.message') }}</span>
             <textarea></textarea>
           </label>
           <button>
-            <span>{{$t('footer.send')}}</span>
+            <span>{{ $t('footer.send') }}</span>
           </button>
         </form>
       </div>
       <div class="second">
-        <p class="heading-title">{{$t('footer.other-ways')}}</p>
+        <p class="heading-title">{{ $t('footer.other-ways') }}</p>
+        <div id="phone-number-list-wrapper">
+          <img src="~/assets/images/phonecall.png" alt="" class="icon">
+          <ul id="phone-number-list">
+            <li v-for="phone in footerSetting.phones">
+              <a :href="`tel:${phone}`">{{ phone }}</a>
+            </li>
+          </ul>
+        </div>
+        <div id="phone-number-list-wrapper">
+          <ul id="phone-number-list" class="social-media-list">
+            <li v-for="social in footerSetting.socialMedia">
+              <a :aria-label="social.name" :title="social.name" :href="social.link">{{ phone }}
+                <img v-if="social.icon" src="~/assets/images/phonecall.png" alt="" class="icon">
+                <div class="icon-mimik">
+                  <span>{{ social.name[0] }}</span>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="phone-number-list-wrapper">
+
+          <p>
+            <b>آدرس :</b>
+            {{ footerSetting?.address }}
+          </p>
+
+        </div>
       </div>
     </div>
   </footer>
@@ -41,6 +69,8 @@
 
 <script setup>
 const mobileNumber = ref();
+const footerSetting = useState('default-setting').value?.footer
+
 </script>
 
 <style scoped>
@@ -49,12 +79,14 @@ const mobileNumber = ref();
   font-family: Kalameh-SemiBold;
   margin-bottom: 52px;
 }
+
 .top-space {
   height: 37vh;
   width: 100%;
   overflow: hidden;
   position: relative;
 }
+
 .top-space::before {
   content: "";
   display: block;
@@ -68,7 +100,8 @@ const mobileNumber = ref();
   border-radius: 50%;
   z-index: 0;
 }
-.bottom-space > #footer-logo {
+
+.bottom-space>#footer-logo {
   position: absolute;
   top: 0;
   left: 50%;
@@ -86,6 +119,7 @@ footer {
   position: relative;
   z-index: 101;
 }
+
 footer .bottom-space {
   position: relative;
   display: flex;
@@ -93,15 +127,18 @@ footer .bottom-space {
   gap: 11vw;
   padding: var(--padding-inline);
 }
-footer .bottom-space > * {
+
+footer .bottom-space>* {
   width: calc(50% - 5vw);
 }
+
 footer form {
   display: flex;
   flex-flow: wrap;
   gap: calc(var(--gap) + 12px);
   column-gap: var(--gap);
 }
+
 footer form label {
   position: relative;
   flex: 1;
@@ -109,6 +146,7 @@ footer form label {
   max-width: 50%;
   min-width: 40%;
 }
+
 footer form label span {
   position: absolute;
   top: 0;
@@ -121,43 +159,99 @@ footer form label span {
 }
 
 footer form label:last-of-type,
-footer form > button {
+footer form>button {
   flex: 2;
   width: 100%;
   max-width: 100%;
   min-width: 100%;
   border-radius: 12px;
 }
-footer form label > textarea {
+
+footer form label>textarea {
   height: 150px !important;
   resize: none;
 }
-footer form > button {
+
+footer form>button {
   margin-top: -12px;
   height: 64px;
   font-family: Kalameh-SemiBold;
   font-size: 24px;
 }
+
 footer .second {
   text-align: end;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap);
 }
+
+#phone-number-list-wrapper {
+  display: flex;
+  text-align: left;
+  direction: ltr;
+  align-items: start;
+  gap: var(--gap);
+
+}
+
+#phone-number-list {
+  list-style: none;
+  padding: 0;
+  max-width: 90%;
+  display: flex;
+  gap: var(--gap);
+  margin: 0;
+}
+
+#phone-number-list a {
+  color: var(--light-color);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  height: 48px;
+}
+
+.social-media-list a {
+  color: var(--dark-color) !important;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bolder;
+}
+
+.icon-mimik {
+  width: 48px;
+  height: 48px;
+  background: #d9d9d9;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
 @media (max-width: 980px) {
-  footer > .bottom-space {
+  footer>.bottom-space {
     flex-direction: column;
     padding-top: 15vw;
   }
-  footer > .bottom-space > * {
+
+  footer>.bottom-space>* {
     width: 100%;
   }
+
   footer .bottom-space .second {
     text-align: start;
   }
-  .bottom-space > #footer-logo {
+
+  .bottom-space>#footer-logo {
     width: 30vw;
   }
+
   footer form label {
     max-width: unset;
     min-width: 100%;
   }
+
+
 }
 </style>

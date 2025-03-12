@@ -188,3 +188,11 @@ table > tbody td{
     height:unset !important;
     min-height: 200px;
 }
+.single-blog-page .content img{
+    max-width: 100%;
+}
+
+.single-blog-page .content h1{
+    font-size:2em;
+
+}

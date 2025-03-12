@@ -50,6 +50,8 @@
     },
     "blogs":{
         "intro":"Read reliable articles and news about the valve manufacturing industry and the food and coffee industries here on Lhasa Blog and keep your information up to date."
+        ,
+        "no-lang-content":"Unfortunately, the content of this page is not available in this language."
     }
     
 }

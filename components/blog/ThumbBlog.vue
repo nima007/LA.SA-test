@@ -1,20 +1,24 @@
 <script setup>
+const props = defineProps(['blogData'])
+const lang = useI18n().locale;
+console.log("prop" ,props.blogData);
+
 </script>
 
 <template>
-    <NuxtLinkLocale :to="{name:'blog_single_page',params:{'slug':'x'}}" class="blog-item"  itemscope itemtype="https://schema.org/Article">
+    <NuxtLinkLocale :to="{name:'blog_single_page',params:{'slug':blogData.slug}}" class="blog-item"  itemscope itemtype="https://schema.org/Article">
         <article>
             <div class="blog-image-date-category-wrapper">
-                <img src="~/assets/images/blg.jpg" alt="">
+                <img :src="blogData.image" alt="">
                 <div class="blog-data-row">
                     <div class="date-chips chips">
                         <img src="~/assets/images/cal.svg" alt="">
-                        <span>10/11/1404</span>
+                        <span>{{new Date(blogData.updatedAt).toLocaleDateString(lang)}}</span>
                     </div>
                 </div>
             </div>
             <div class="blog-context-wrapper">
-                <h2 itemprop="name">چرا از سوپاپ برای بسته بندی استفاده کنیم</h2>
+                <h2 itemprop="name">{{blogData.title[lang]}}</h2>
             </div>
         </article>
     </NuxtLinkLocale>
