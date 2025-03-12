@@ -194,5 +194,30 @@ table > tbody td{
 
 .single-blog-page .content h1{
     font-size:2em;
+}
 
+button.loading:disabled{
+    position: relative;
+    gap: var(--gap);
+    background-color: #a7a7a7;
+    color: var(--light-color);
+    cursor: not-allowed;
+}
+button.loading:disabled::before{
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 5px solid var(--light-color);
+    border-bottom-color: transparent;
+    content: "";
+    display: inline-block;
+    animation: loading-animation 1s infinite linear;
+}
+@keyframes loading-animation {
+    form{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
 }

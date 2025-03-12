@@ -57,7 +57,7 @@
                     </ul>
                 </div>
             </section>
-            <button @click="updateProduct">ثبت</button>
+            <button class="loading" :disabled="ctaLoading" @click="updateProduct">بروزرسانی</button>
         </form>
     </main>
 </template>
@@ -69,6 +69,8 @@ definePageMeta({
     name: "admin_products_update",
     layout: "admin"
 });
+const ctaLoading = ref(false)
+
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage();
 function removeFromNewImages(index) {
@@ -88,12 +90,14 @@ if (data) {
 
 }
 function updateProduct() {
+    ctaLoading.value = true
     product.value.primaryImage = PrimaryImageFile.value
     product.value.images = imagesFiles.value;
     $fetch(`/api/admin/products/update/${route.params.id}`, {
         method: "put",
         body: product.value
     }).then(res => {
+        ctaLoading.value = false
         if (res === true) {
             console.log("Product update successfully")
             alert("محصول با موفقیت بروزرسانی شد");
@@ -105,6 +109,9 @@ function updateProduct() {
             alert("خطا در بروز رسانی محصول ")
             console.log(res);
         }
+    }).catch(e=>{
+        ctaLoading.value = false
+        alert("خطا در بروزرسانی محصول")
     })
 }
 </script>

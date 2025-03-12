@@ -42,7 +42,7 @@
                         <textarea v-model="footerForm.address" name="" id=""></textarea>
                     </label>
                 </div>
-                <button @click="updateFooterData">تایید</button>
+                <button class="loading" :disabled="ctaLoading" @click="updateFooterData">تایید</button>
             </form>
         </section>
     </main>
@@ -52,6 +52,8 @@ definePageMeta({
     name: "admin_setting_page",
     layout: "admin"
 })
+const ctaLoading = ref(false)
+
 const footerForm = ref({
     phones: [],
     socialMedia: [],
@@ -64,18 +66,29 @@ await useFetch("/api/admin/setting/footer", {
     if (res.data.value) {
         console.log("hey");
         console.log(res.data.value.phones);
-        
+
         footerForm.value.phones = res.data.value.phones;
         footerForm.value.socialMedia = res.data.value.socialMedia;
         footerForm.value.address = res.data.value.address;
     }
 })
 
-function updateFooterData() {
-    $fetch("/api/admin/setting/footer", {
+async function updateFooterData() {
+    ctaLoading.value = true
+    await $fetch("/api/admin/setting/footer", {
         method: "post",
         body: footerForm.value
+    }).then(res=>{
+        console.log(res);
+        ctaLoading.value = false
+        if(res?.footer){
+            alert("تنظیمات ثبت شد")
+        }
+    }).catch(e=>{
+        ctaLoading.value = false
+        alert("  خطا در ثبت تنظیمات ");
     })
+
 }
 
 

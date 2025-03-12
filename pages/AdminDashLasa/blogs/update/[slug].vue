@@ -1,5 +1,5 @@
 <script setup>
-import  FrontBlog from '~/utils/FrontBlog';
+import FrontBlog from '~/utils/FrontBlog';
 definePageMeta({
     title: "ادمین - بلاگ",
     name: "admin_dash_blogs_update_page",
@@ -8,7 +8,7 @@ definePageMeta({
 
 const route = useRoute();
 const slug = route.params.slug;
-console.log("slug",slug);
+const ctaLoading = ref(false)
 
 const blog = ref(null);
 const { data } = await useFetch(`/api/admin/blogs/blog/${slug}`, {
@@ -16,41 +16,47 @@ const { data } = await useFetch(`/api/admin/blogs/blog/${slug}`, {
 })
 console.log(data);
 
-if(data){
-    blog.value = new FrontBlog(data.value.title,data.value.content,data.value.image,data.value.slug)
+if (data) {
+    blog.value = new FrontBlog(data.value.title, data.value.content, data.value.image, data.value.slug)
 
 }
 
 const BlogState = useState('blog_state')
 if (!BlogState.value) {
-    BlogState.value = {...blog.value}
+    BlogState.value = { ...blog.value }
 } else {
     blog.value = BlogState.value
 }
 
 async function updateBlog() {
+    ctaLoading.value = true
+    const blogData = {...blog.value}
     if (typeof blog.value.image[0] == "string") {
-        delete blog.value.image
+        delete blogData.image
     }
-    console.log("blog.value " ,{...blog.value});
-    
-    let res = await useFetch(`/api/admin/blogs/blog/${slug}`,
+    console.log("blog.value ", { ...blog.value });
+
+    await $fetch(`/api/admin/blogs/blog/${slug}`,
         {
             method: "put",
-            body: {...blog.value}
+            body: blogData
         }
-    )
-    console.log("blog res ", res);
-    console.log("blog res error", res.error);
-    console.log(useError(res.error))
-
+    ).then(res => {
+        if (res) {
+            ctaLoading.value = false
+            alert("بلاگ با موفقیت به روز رسانی شد");
+        }
+    }).catch(e => {
+        ctaLoading.value = false
+        alert("خطا در بروز رسانی بلاگ")
+    })
 }
 </script>
 <template>
     <main>
         <h1>ویرایش بلاگ</h1>
         <AdminBlogsDataInputs v-if="blog" v-model="blog"></AdminBlogsDataInputs>
-        <button style="width: 100%;" @click="updateBlog">ثبت</button>
+        <button class="loading" :disabled="ctaLoading" style="width: 100%;" @click="updateBlog">ثبت</button>
     </main>
 </template>
 <style scoped>

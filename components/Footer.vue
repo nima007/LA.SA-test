@@ -34,17 +34,17 @@
       </div>
       <div class="second">
         <p class="heading-title">{{ $t('footer.other-ways') }}</p>
-        <div id="phone-number-list-wrapper">
+        <div v-if="footerSetting" id="phone-number-list-wrapper">
           <img src="~/assets/images/phonecall.png" alt="" class="icon">
           <ul id="phone-number-list">
-            <li v-for="phone in footerSetting.phones">
+            <li v-for="phone in footerSetting?.phones">
               <a :href="`tel:${phone}`">{{ phone }}</a>
             </li>
           </ul>
         </div>
-        <div id="phone-number-list-wrapper">
+        <div v-if="footerSetting" id="phone-number-list-wrapper">
           <ul id="phone-number-list" class="social-media-list">
-            <li v-for="social in footerSetting.socialMedia">
+            <li v-for="social in footerSetting?.socialMedia">
               <a :aria-label="social.name" :title="social.name" :href="social.link">{{ phone }}
                 <img v-if="social.icon" src="~/assets/images/phonecall.png" alt="" class="icon">
                 <div class="icon-mimik">
@@ -54,7 +54,7 @@
             </li>
           </ul>
         </div>
-        <div id="phone-number-list-wrapper">
+        <div v-if="footerSetting" id="phone-number-list-wrapper">
 
           <p>
             <b>آدرس :</b>

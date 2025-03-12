@@ -4,6 +4,7 @@ definePageMeta({
     name: "admin_dash_blogs_create_page",
     layout: "admin"
 })
+const ctaLoading = ref(false)
 const blog = ref({
     title: {
         fa: "",
@@ -27,23 +28,26 @@ if (!BlogState.value) {
     blog.value = BlogState.value
 }
 async function saveBlog() {
-    let res = await useFetch("/api/admin/blogs",
+    ctaLoading.value=true
+   await $fetch("/api/admin/blogs",
         {
             method: "post",
             body: blog.value
         }
-    )
-    console.log("blog res ", res);
-    console.log("blog res error", res.error);
-    console.log(useError(res.error))
-
+    ).then(res=>{
+        ctaLoading.value=false
+        alert("بلاگ ثبت شد")
+    }).catch(e=>{
+        ctaLoading.value=false
+        alert("خطا در ثبت بلاگ")
+    })
 }
 </script>
 <template>
     <main>
         <h1>ویرایش بلاگ</h1>
         <AdminBlogsDataInputs v-model="blog"></AdminBlogsDataInputs>
-        <button style="width: 100%;" @click="saveBlog">ثبت</button>
+        <button class="loading" :disabled="ctaLoading" style="width: 100%;" @click="saveBlog">ثبت</button>
     </main>
 </template>
 <style scoped>

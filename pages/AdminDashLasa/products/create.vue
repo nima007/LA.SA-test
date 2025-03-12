@@ -51,7 +51,7 @@
                     </ul>
                 </div>
             </section>
-            <button @click="saveProduct">ثبت</button>
+            <button class="loading" :disabled="ctaLoading" @click="saveProduct">ثبت</button>
         </form>
     </main>
 </template>
@@ -61,6 +61,7 @@ definePageMeta({
     name: "admin_products_create",
     layout: "admin"
 });
+const ctaLoading = ref(false)
 const localeRoute = useLocaleRoute()
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage()
@@ -78,12 +79,14 @@ const product = ref({
     primaryImage: {},
 })
 function saveProduct() {
+    ctaLoading.value = true
     product.value.primaryImage = PrimaryImageFile.value
     product.value.images = imagesFiles.value
     $fetch("/api/admin/products/create", {
         method: "POST",
         body: product.value
     }).then(res => {
+        ctaLoading.value = false
         if (res === true) {
             alert("محصول با موفقیت ثبت شد");
             const router = localeRoute({
@@ -94,6 +97,9 @@ function saveProduct() {
             alert("خطا در ثبت محصول ")
             console.log(res);
         }
+    }).catch(e => {
+        ctaLoading.value = false
+        alert("خطا در ثبت محصول ")
     })
 }
 </script>
