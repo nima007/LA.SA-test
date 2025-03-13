@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   },
   plugins: ["~/plugins/vue-tel-input.ts"],
   i18n: {
-    vueI18n: "./i18n.config.ts",
+    vueI18n: "~/i18n.config.ts",
     locales: [
       {
         code: 'fa',
@@ -33,10 +33,14 @@ export default defineNuxtConfig({
       }
     ],
     strategy: 'prefix_and_default',
-    baseUrl: 'localhsot:3000'
+    // baseUrl: 'localhsot:3000'
+    baseUrl: 'https://lasa.liara.run'
+    
   },
   runtimeConfig: {
-    mongoose_url: 'mongodb://localhost:27017/LASA_db',
+    mongoose_url:'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
+    // 'mongodb://localhost:27017/LASA_db',
+    
     storeMountPath: process.env.storeMountPath,
     relStoreMountPath:  process.env.storeMountPath?.slice(process.env.storeMountPath.search("server") - 1)
   },

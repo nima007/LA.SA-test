@@ -1,0 +1,8 @@
+{
+    "disks":[
+        {
+            "name":"lasapublic",
+            "mountTo":".output/public/uploads"
+        }
+    ]
+}

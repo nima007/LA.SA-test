@@ -24,6 +24,17 @@ export default defineEventHandler(async (event) => {
       return x[0];
     })();
   }
+  if (!data.catalogue.length) {
+    data.catalogue = null;
+  } else {
+    data.catalogue = await (async () => {
+      let x = await saveProductImage(
+        normalFileName(data.name.en),
+        data.catalogue
+      );
+      return x[0];
+    })();
+  }
 
   data.images = await saveProductImage(
     normalFileName(data.name.en),
@@ -40,7 +51,7 @@ export default defineEventHandler(async (event) => {
     product.attributes = data.attributes;
     product.primaryImage = data.primaryImage || product.primaryImage;
     product.images = data.images;
-    product.catalogue = data.catalogue;
+    product.catalogue = data.catalogue|| product.catalogue;
     product.slug = data.slug;
     product.save();
     return true;

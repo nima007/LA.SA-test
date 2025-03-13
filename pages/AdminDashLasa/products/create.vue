@@ -51,6 +51,21 @@
                     </ul>
                 </div>
             </section>
+            <section>
+                <p> کاتالوگ</p>
+                <div style="width: 100% !important;">
+                    <label class="fileLabel" for="catalogue-list-input">
+                        <input type="file" id="catalogue-list-input" accept="application/pdf"
+                            @input="handleCatalogueFile">
+                        <p>افزودن کاتالوگ</p>
+                    </label>
+                    <ul class="files-in-upload">
+                        <li v-for="(file, index) in catalogueFiles" :key="index">
+                            {{ file.name }}
+                        </li>
+                    </ul>
+                </div>
+            </section>
             <button class="loading" :disabled="ctaLoading" @click="saveProduct">ثبت</button>
         </form>
     </main>
@@ -64,7 +79,14 @@ definePageMeta({
 const ctaLoading = ref(false)
 const localeRoute = useLocaleRoute()
 const { handleFileInput: handleImagesFiles, files: imagesFiles } = useFileStorage({ clearOldFiles: false })
+const { handleFileInput: handleCatalogueFile, files: catalogueFiles } = useFileStorage({ clearOldFiles: false })
 const { handleFileInput: handlePrimaryImage, files: PrimaryImageFile } = useFileStorage()
+watch(catalogueFiles, () => {
+    if (catalogueFiles.value[0]&&catalogueFiles.value[0].name.split(".").at(-1) != "pdf") {
+        catalogueFiles.value = [];
+        alert("فقط فایل PDF پشتیبانی می شود")
+    }
+}, { deep: true })
 const product = ref({
     name: {
         fa: "",
@@ -82,6 +104,7 @@ function saveProduct() {
     ctaLoading.value = true
     product.value.primaryImage = PrimaryImageFile.value
     product.value.images = imagesFiles.value
+    product.value.catalogue = catalogueFiles.value
     $fetch("/api/admin/products/create", {
         method: "POST",
         body: product.value

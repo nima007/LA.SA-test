@@ -214,7 +214,7 @@ button.loading:disabled::before{
     animation: loading-animation 1s infinite linear;
 }
 @keyframes loading-animation {
-    form{
+    from{
         transform: rotate(0deg);
     }
     to{

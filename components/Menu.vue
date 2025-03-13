@@ -36,9 +36,9 @@
       </div>
     </section>
     <section class="second-side-container" :class="{'ltr-line':i18nHead.htmlAttrs.dir=='ltr'}">
-      <button>
+      <NuxtLinkLocale :to="{name:'catalogue_page'}" class="button">
         <span>{{$t('menu.downloads')}}</span>
-      </button>
+      </NuxtLinkLocale>
       <button
         class="no-button-appearance"
         id="change-lang"

@@ -50,6 +50,16 @@ export default Joi.object({
       })
     ).min(0)
     .allow(null),
-  catalogue:Joi.array().min(0).optional(),
-  slug:Joi.string().allow("").allow(null).optional()
+  catalogue: Joi.array()
+    .items(
+      Joi.object({
+        name: Joi.string(),
+        size: Joi.number(),
+        type: Joi.string(),
+        lastModified: Joi.date(),
+        content: Joi.string(),
+      })
+    ).min(0)
+    .allow(null),
+  slug: Joi.string().allow("").allow(null).optional()
 });

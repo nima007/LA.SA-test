@@ -1,4 +1,4 @@
-import Joi, { link } from "joi";
+import Joi from "joi";
 
 export default Joi.object({
     phones: Joi.array(),

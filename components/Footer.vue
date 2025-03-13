@@ -55,12 +55,10 @@
           </ul>
         </div>
         <div v-if="footerSetting" id="phone-number-list-wrapper">
-
           <p>
             <b>آدرس :</b>
             {{ footerSetting?.address }}
           </p>
-
         </div>
       </div>
     </div>
