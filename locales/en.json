@@ -26,7 +26,8 @@
         "message": "Your message",
         "send": "Accept and submit",
         "contact-us": "contact with us",
-        "other-ways": "other ways to contact us"
+        "other-ways": "other ways to contact us",
+        "address":"address"
     },
     "products-page": {
         "page-title": "valves and products"
@@ -43,10 +44,10 @@
             "value":"value"
         }
     },
-    "contact-page":{
-        "tell-title":"telephone communication method",
-        "social-title":"social media and messengers",
-        "message-title":"you can send message to us"
+    "contact-page":{    
+        "tell-title":"How to contact LASA by phone",
+        "social-title":"LASA social media and messengers",
+        "message-title":"you can also send LASA a message"
     },
     "blogs":{
         "intro":"Read reliable articles and news about the valve manufacturing industry and the food and coffee industries here on Lhasa Blog and keep your information up to date."

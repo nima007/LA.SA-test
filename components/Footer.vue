@@ -53,9 +53,9 @@
             </li>
           </ul>
         </div>
-        <div v-if="footerSetting" id="phone-number-list-wrapper">
+        <div v-if="footerSetting?.address" id="phone-number-list-wrapper">
           <p>
-            <b>آدرس :</b>
+            <b>{{ $t('address') }} :</b>
             {{ footerSetting?.address }}
           </p>
         </div>
@@ -79,22 +79,22 @@ const message = ref({
 async function sendMessage() {
   const { senderName, senderMobile, senderEmail, message: mm } = { ...message.value }
   if (senderName && senderMobile && senderEmail && mm) {
-    ctaLoading.value =true
+    ctaLoading.value = true
     await $fetch("/api/message", {
       method: "post",
       body: message.value
-    }).then(res=>{
-      if(res){
-        alert(lang=="fa"?"پیام شما با موفقیت ارسال شد":"we received your message. :)")
+    }).then(res => {
+      if (res) {
+        alert(lang == "fa" ? "پیام شما با موفقیت ارسال شد" : "we received your message. :)")
       }
-    }).catch(e=>{
-      alert(lang=="fa"?"متاسفانه در ذخیره پیام شما به مشکل بر خوردیم. لطفا برای ارتباط با ما ، تماس بگیرید":"Unfortunately, there was an error receiving your message. Please use the phone number to contact us. :(")
+    }).catch(e => {
+      alert(lang == "fa" ? "متاسفانه در ذخیره پیام شما به مشکل بر خوردیم. لطفا برای ارتباط با ما ، تماس بگیرید" : "Unfortunately, there was an error receiving your message. Please use the phone number to contact us. :(")
 
     })
-    ctaLoading.value =false
+    ctaLoading.value = false
 
-  }else{
-    alert(lang=="fa"?"تمامی فیلد ها الزامی هستند":"please fill all of inputs")
+  } else {
+    alert(lang == "fa" ? "تمامی فیلد ها الزامی هستند" : "please fill all of inputs")
 
   }
 }
