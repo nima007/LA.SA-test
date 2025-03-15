@@ -15,6 +15,9 @@
                     <li>
                         <NuxtLinkLocale :to="{name:'admin_setting_page'}">تنظیمات</NuxtLinkLocale>
                     </li>
+                    <li>
+                        <NuxtLinkLocale :to="{name:'admin_messages_page'}">پیام ها</NuxtLinkLocale>
+                    </li>
                     
                 </ul>
             </nav>
@@ -23,7 +26,12 @@
     </div>
 </template>
 <script setup>
-
+const adminDashState = useState("admin-dash-state")
+useFetch("/api/admin/messsages",{method:"get"}).then(res=>{
+adminDashState.value={
+    messages:res.data.value
+}
+})
 </script>
 <style scoped>
 #admin-layout{

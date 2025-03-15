@@ -54,7 +54,8 @@
 </template>
 <script setup>
 definePageMeta({
-    name: 'contact_us'
+    name: 'contact_us',
+    auth:false
 })
 </script>
 <style scoped>

@@ -1,10 +1,17 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import path from "path";
+
+const storeMountPath = process.env.storeMountPath;
+// path.join(process.cwd(),"/server/files/temp")
+// process.env.storeMountPath;
+const relStoreMountPath = storeMountPath?.slice(storeMountPath.search("server") - 1)
+
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
-  css: ['~/assets/main.css','~/assets/tp-style.css'],
-  modules: ['@vueuse/nuxt', '@nuxtjs/i18n', 'nuxt-file-storage'],
+  css: ['~/assets/main.css', '~/assets/tp-style.css'],
+  modules: ['@vueuse/nuxt', '@nuxtjs/i18n', 'nuxt-file-storage','@sidebase/nuxt-auth'],
   fileStorage: {
-    mount: process.env.storeMountPath,
+    mount: storeMountPath,
   },
   devtools: {
     enabled: true,
@@ -12,6 +19,11 @@ export default defineNuxtConfig({
     timeline: {
       enabled: true
     }
+  },
+  auth: {
+    globalAppMiddleware: true,
+    baseURL: 'http://localhost:3000/api/auth'
+    // baseURL: "https://digicoffeemarket.ir"
   },
   plugins: ["~/plugins/vue-tel-input.ts"],
   i18n: {
@@ -33,16 +45,17 @@ export default defineNuxtConfig({
       }
     ],
     strategy: 'prefix_and_default',
-    // baseUrl: 'localhsot:3000'
-    baseUrl: 'https://lasa.liara.run'
-    
+    baseUrl: 'localhsot:3000'
+    // baseUrl: 'https://lasa.liara.run'
+
   },
   runtimeConfig: {
-    mongoose_url:'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
-    // 'mongodb://localhost:27017/LASA_db',
-    
-    storeMountPath: process.env.storeMountPath,
-    relStoreMountPath:  process.env.storeMountPath?.slice(process.env.storeMountPath.search("server") - 1)
+    mongoose_url: 
+    // 'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
+    'mongodb://localhost:27017/LASA_db',
+
+    storeMountPath,
+    relStoreMountPath
   },
   nitro: {
     plugins: ['~/server/db/index.js'],
@@ -50,10 +63,13 @@ export default defineNuxtConfig({
       productsImages: {
         driver: 'fs',
         base: 'public/uploads/products_images'
+        // base: '.output/public/uploads/products_images',
       },
       blogFile: {
         driver: 'fs',
         base: 'public/uploads/blog'
+        // base: '.output/public/uploads/blog',
+
       }
     }
   }

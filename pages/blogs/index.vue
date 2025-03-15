@@ -28,7 +28,8 @@
 </template>
 <script setup>
 definePageMeta({
-    name: 'blogs_index'
+    name: 'blogs_index',
+    auth:false
 })
 const { data: blogsList } = await useFetch('/api/blogs', { query: { lang: useI18n().locale.value } });
 console.log("blogList", blogsList);

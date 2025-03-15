@@ -3,6 +3,9 @@
         {
             "name":"lasapublic",
             "mountTo":".output/public/uploads"
+        },{
+            "name":"tempserver",
+            "mountTo":"./server/files/temp"
         }
     ]
 }

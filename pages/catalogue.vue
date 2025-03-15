@@ -15,7 +15,8 @@
 <script setup>
 definePageMeta({
     name: "catalogue_page",
-    layout: "default"
+    layout: "default",
+    auth:false
 })
 const lang = useI18n().locale.value
 const products = ref([])

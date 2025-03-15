@@ -51,7 +51,8 @@
 
 <script setup>
 definePageMeta({
-  name: "product_page"
+  name: "product_page",
+  auth:false
 });
 const route = useRoute();
 const productSlug = ref(route.params.slug);

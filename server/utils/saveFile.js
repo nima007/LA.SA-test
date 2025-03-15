@@ -7,6 +7,8 @@ const storageBlogImage = useStorage("blogFile");
 export async function saveFile(baseName, file) {
   const fileName = `${baseName}_${Date.now()}`;
   const savedFile = await storeFileLocally(file, fileName);
+  console.log("try to store file : ",saveFile);
+  
   return savedFile;
 }
 
@@ -28,7 +30,7 @@ export async function saveProductImage(baseName, images) {
       imageKey,
       await readFile(tempFileAddress)
     );
-    unlink(tempFileAddress);
+    // unlink(tempFileAddress);
     filesNameArray.push(`/api/storage/${imageKey}`);
   }
   return filesNameArray;
@@ -52,7 +54,7 @@ export async function saveBlogImage(baseName, images) {
       imageKey,
       await readFile(tempFileAddress)
     );
-    unlink(tempFileAddress);
+    // unlink(tempFileAddress);
     filesNameArray.push(`/api/storage/blog/${imageKey}`);
   }
   return filesNameArray;

@@ -3,6 +3,8 @@
     <h1>به داشبورد ادمین خوش آمدید</h1>
     <p>از منوی سمت راست به تنظیمات مورد نظر وارد شوید</p>
     <p>&#x26A0; به خاطر بسپارید صفحهات ادمین در گوشی دسترسی پذیر نیستند !</p>
+    <hr>
+    <p>شما {{unReadMessagesCount}} پیام خوانده نشده دارید</p>
   </main>
 </template>
 
@@ -17,6 +19,16 @@ const { data, error } = await useAsyncData("getIndex", () =>
     query: { lang: useI18n().locale.value }
   })
 );
+const adminDashState = useState("admin-dash-state")
+console.log(adminDashState.value.messages);
+
+const unReadMessagesCount = ref(0)
+if (adminDashState.value?.messages.length) {
+  unReadMessagesCount.value = adminDashState.value.messages.filter(x => !x.isRead).length
+}
+// useFetch("/api/admin/messsages", { method: "get" }).then(res => {
+//     adminDashState.value.messages = res.data.value
+// })
 </script>
 
 <style scoped>

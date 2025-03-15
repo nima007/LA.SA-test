@@ -22,7 +22,8 @@
 </template>
 <script setup>
 definePageMeta({
-    name: 'blog_single_page'
+    name: 'blog_single_page',
+    auth:false
 })
 const route = useRoute();
 const blogSlug = route.params.slug;

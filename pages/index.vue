@@ -15,7 +15,8 @@
 </template>
 <script setup>
 definePageMeta({
-  name: "homePage"
+  name: "homePage",
+  auth:false
 });
 </script>
 <style scoped>

@@ -6,7 +6,8 @@
 
 <script setup>
 definePageMeta({
-    name:"about_us"
+    name:"about_us",
+    auth:false
 })
 </script>
 
