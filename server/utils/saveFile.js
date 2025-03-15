@@ -30,7 +30,7 @@ export async function saveProductImage(baseName, images) {
       imageKey,
       await readFile(tempFileAddress)
     );
-    // unlink(tempFileAddress);
+    unlink(tempFileAddress);
     filesNameArray.push(`/api/storage/${imageKey}`);
   }
   return filesNameArray;
