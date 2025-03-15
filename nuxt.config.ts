@@ -1,8 +1,8 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import path from "path";
 
-const storeMountPath = process.env.storeMountPath;
-// path.join(process.cwd(),"/server/files/temp")
+const storeMountPath = path.join(process.cwd(),"/server/files/temp")
+// process.env.storeMountPath;
 // process.env.storeMountPath;
 const relStoreMountPath = storeMountPath?.slice(storeMountPath.search("server") - 1)
 
@@ -22,8 +22,8 @@ export default defineNuxtConfig({
   },
   auth: {
     globalAppMiddleware: true,
-    baseURL: 'http://localhost:3000/api/auth'
-    // baseURL: "https://digicoffeemarket.ir"
+    // baseURL: 'http://localhost:3000/api/auth'
+    baseURL: "https://lasa.liara.run/api/auth"
   },
   plugins: ["~/plugins/vue-tel-input.ts"],
   i18n: {
@@ -45,14 +45,14 @@ export default defineNuxtConfig({
       }
     ],
     strategy: 'prefix_and_default',
-    baseUrl: 'localhsot:3000'
-    // baseUrl: 'https://lasa.liara.run'
+    // baseUrl: 'localhsot:3000'
+    baseUrl: 'https://lasa.liara.run'
 
   },
   runtimeConfig: {
     mongoose_url: 
-    // 'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
-    'mongodb://localhost:27017/LASA_db',
+    'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
+    // 'mongodb://localhost:27017/LASA_db',
 
     storeMountPath,
     relStoreMountPath
@@ -62,13 +62,13 @@ export default defineNuxtConfig({
     storage: {
       productsImages: {
         driver: 'fs',
-        base: 'public/uploads/products_images'
-        // base: '.output/public/uploads/products_images',
+        // base: 'public/uploads/products_images'
+        base: '.output/public/uploads/products_images',
       },
       blogFile: {
         driver: 'fs',
-        base: 'public/uploads/blog'
-        // base: '.output/public/uploads/blog',
+        // base: 'public/uploads/blog'
+        base: '.output/public/uploads/blog',
 
       }
     }
