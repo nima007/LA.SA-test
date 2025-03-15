@@ -3,7 +3,6 @@
     <div class="top-space"></div>
     <div class="bottom-space">
       <img id="footer-logo" src="~/assets/images/LASA_Logo.png" alt />
-
       <div class="first">
         <p class="heading-title">{{ $t('footer.contact-us') }}</p>
         <form @submit.prevent>

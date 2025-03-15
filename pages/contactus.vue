@@ -6,9 +6,9 @@
         <div id="wrapper-contact-us">
             <section>
                 <p>{{ $t('contact-page.tell-title') }}</p>
-                <a class="button" href="tel:093946573052">
-                    <span>
-                        093946573052
+                <a v-for="phone in footerSetting.phones" class="button" :href="`tel:${phone}`">
+                    <span style="direction: ltr;">
+                        {{ phone }}
                     </span>
                 </a>
             </section>
@@ -16,7 +16,10 @@
                 <p>
                     {{ $t('contact-page.social-title') }}
                 </p>
-                <ul>
+                <ul class="social-media-list">
+                    <li v-for="social in footerSetting.socialMedia">
+                        <a :title="social.name" :href="social.link">{{ social.name[0] }}</a>
+                    </li>
                 </ul>
             </section>
             <section>
@@ -26,27 +29,27 @@
                     </p>
                     <label for>
                         <span>{{ $t('footer.name') }}</span>
-                        <input type="text" />
+                        <input v-model="message.senderName" type="text" />
                     </label>
                     <label for>
                         <span>{{ $t('footer.company') }}</span>
-                        <input type="text" />
+                        <input v-model="message.senderCompany" type="text" />
                     </label>
                     <label for class="vue-tel-input-label">
                         <span>{{ $t('footer.phone') }}</span>
-                        <vue-tel-input v-model="mobileNumber" mode="international" />
+                        <vue-tel-input v-model="message.senderMobile"  mode="international" />
                     </label>
                     <label for>
                         <span>{{ $t('footer.email') }}</span>
-                        <input type="email" />
+                        <input v-model="message.senderEmail" type="email" />
                     </label>
                     <label for>
                         <span>{{ $t('footer.message') }}</span>
-                        <textarea></textarea>
+                        <textarea v-model="message.message"></textarea>
                     </label>
-                    <button>
+                    <button class="loading" :disabled="ctaLoading" @click="sendMessage">
                         <span>{{ $t('footer.send') }}</span>
-                    </button>
+                      </button>
                 </form>
             </section>
         </div>
@@ -55,8 +58,40 @@
 <script setup>
 definePageMeta({
     name: 'contact_us',
-    auth:false
+    auth: false
+});
+const ctaLoading = ref(false)
+const lang = useI18n().locale.value
+const footerSetting = useState('default-setting').value?.footer
+console.log("footerSetting", footerSetting);
+const message = ref({
+  senderName: "",
+  senderMobile: "",
+  senderEmail: "",
+  senderCompany: "",
+  message: "",
 })
+async function sendMessage() {
+  const { senderName, senderMobile, senderEmail, message: mm } = { ...message.value }
+  if (senderName && senderMobile && senderEmail && mm) {
+    ctaLoading.value =true
+    await $fetch("/api/message", {
+      method: "post",
+      body: message.value
+    }).then(res=>{
+      if(res){
+        alert(lang=="fa"?"پیام شما با موفقیت ارسال شد":"we received your message. :)")
+      }
+    }).catch(e=>{
+      alert(lang=="fa"?"متاسفانه در ذخیره پیام شما به مشکل بر خوردیم. لطفا برای ارتباط با ما ، تماس بگیرید":"Unfortunately, there was an error receiving your message. Please use the phone number to contact us. :(")
+
+    })
+    ctaLoading.value =false
+
+  }else{
+    alert(lang=="fa"?"تمامی فیلد ها الزامی هستند":"please fill all of inputs")
+  }
+}
 </script>
 <style scoped>
 #message-section {
@@ -67,6 +102,7 @@ definePageMeta({
     width: 700px;
     max-width: 100%;
 }
+
 main {
     padding-top: calc(var(--menu-height) * 1.8);
     display: flex;
@@ -74,6 +110,7 @@ main {
     text-align: center;
     flex-direction: column;
 }
+
 main>#wrapper-contact-us {
     padding-block: 64px;
     position: relative;
@@ -84,6 +121,7 @@ main>#wrapper-contact-us {
     border-bottom: 3px solid #ffdd55;
     max-width: 100%;
 }
+
 main>#wrapper-contact-us>section {
     background: var(--light-color);
     padding: var(--gap);
@@ -92,13 +130,16 @@ main>#wrapper-contact-us>section {
     gap: var(--gap);
     max-width: 100%;
 }
-main>#wrapper-contact-us>section >p{
+
+main>#wrapper-contact-us>section>p {
     font-size: 18px;
     font-family: Kalameh-Medium;
 }
+
 main>#wrapper-contact-us>section>* {
     margin: 0;
 }
+
 #wrapper-contact-us::before {
     position: absolute;
     content: "";
@@ -110,15 +151,18 @@ main>#wrapper-contact-us>section>* {
     background: #ffdd55;
     z-index: -1;
 }
+
 form {
     display: flex;
     flex-flow: wrap;
     gap: calc(var(--gap) + 12px);
     column-gap: var(--gap);
 }
-form > p{
+
+form>p {
     width: 100%;
 }
+
 form label {
     position: relative;
     flex: 1;
@@ -126,6 +170,7 @@ form label {
     max-width: 50%;
     min-width: 40%;
 }
+
 form label span {
     position: absolute;
     top: 0;
@@ -136,6 +181,7 @@ form label span {
     padding-inline: 12px;
     margin-inline-start: 12px;
 }
+
 form label:last-of-type,
 form>button {
     flex: 2;
@@ -144,14 +190,17 @@ form>button {
     min-width: 100%;
     border-radius: 12px;
 }
-form p{
+
+form p {
     font-size: 20px;
 }
-form > label > input{
+
+form>label>input {
     height: 56px !important;
     border-color: var(--dark-color) !important;
 }
-form > label > textarea{
+
+form>label>textarea {
     border-color: var(--dark-color) !important;
 }
 
@@ -166,9 +215,32 @@ form>button {
     font-family: Kalameh-SemiBold;
     font-size: 20px;
 }
+
 @media (max-width:700px) {
-    form > label{
+    form>label {
         min-width: 100% !important;
     }
+}
+.social-media-list{
+    display: flex;
+    gap: var(--gap);
+    list-style: none;
+    width: fit-content;
+    max-width: 300px;
+    margin: auto !important;
+    padding: 0;
+}
+.social-media-list a {
+    color: var(--dark-color) !important;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    text-decoration: none;
+    background: var(--light-color-green);
 }
 </style>

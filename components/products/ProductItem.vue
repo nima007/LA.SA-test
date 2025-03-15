@@ -13,8 +13,8 @@
         <NuxtLinkLocale :to="{name:'product_page',params:{slug:product.slug}}" itemprop="url" class="button">
           {{$t('product-item.button-more')}}
         </NuxtLinkLocale>
-        <NuxtLink class="button btn-secondary">
-          {{$t('product-item.button-catalogue')}}</NuxtLink>
+        <a v-if="product.catalogue" :href="product.catalogue[0]" download="" class="button btn-secondary">
+          {{$t('product-item.button-catalogue')}}</a>
       </div>
     </div>
   </li>
@@ -22,6 +22,7 @@
 
 <script setup>
  const props = defineProps(['product']);
+ 
 </script>
 
 <style scoped>

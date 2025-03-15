@@ -10,12 +10,12 @@
           {{ $t('product-page.attention-to-call') }}
         </p>
         <div id="product-call-to-action-list">
-          <button>
+          <NuxtLinkLocale :to="{name:'contact_us'}" class="button">
             <span>{{ $t('menu.contact') }}</span>
-          </button>
-          <button class="btn-secondary">
+          </NuxtLinkLocale>
+          <a v-if="data.catalogue" :href="data.catalogue" download class="button btn-secondary">
             <span>{{ $t('product-item.button-catalogue') }}</span>
-          </button>
+          </a>
         </div>
       </section>
       <img class="spliter no-padding" src="~/assets/images/gas-spliter.svg" alt />
@@ -50,6 +50,8 @@
 </template>
 
 <script setup>
+import { NuxtLinkLocale } from '#components';
+
 definePageMeta({
   name: "product_page",
   auth:false

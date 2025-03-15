@@ -1,3 +1,5 @@
+
+
 export default function extractProductDataByLang(product, lang) {
     console.log("lang", lang);
     console.log("product", product);
@@ -11,6 +13,7 @@ export default function extractProductDataByLang(product, lang) {
       unit: attribute.unit[lang],
     })),
     primaryImage: product.primaryImage,
+    catalogue:product.catalogue.length?product.catalogue:null,
     images: product.images,
     slug:product.slug
   };
