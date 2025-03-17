@@ -1,11 +1,7 @@
 <template>
-  <header :class="{'open-menu':menuStatus}">
+  <header :class="{ 'open-menu': menuStatus }">
     <section class="first-side-menu-container">
-      <button
-        id="menu-button"
-        aria-label="open and close menu button"
-        @click="menuStatus=!menuStatus"
-      >
+      <button id="menu-button" aria-label="open and close menu button" @click="menuStatus = !menuStatus">
         <div></div>
         <div></div>
         <div></div>
@@ -17,41 +13,37 @@
         <nav>
           <ul>
             <li>
-              <NuxtLinkLocale :to="{name:'homePage'}">{{$t('menu.home')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{ name: 'homePage' }">{{ $t('menu.home') }}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale :to="{name:'products'}">{{$t('menu.products')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{ name: 'products' }">{{ $t('menu.products') }}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale :to="{name:'about_us'}">{{$t('menu.about')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{ name: 'about_us' }">{{ $t('menu.about') }}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale :to="{name:'blogs_index'}">{{$t('menu.blog')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{ name: 'blogs_index' }">{{ $t('menu.blog') }}</NuxtLinkLocale>
             </li>
             <li>
-              <NuxtLinkLocale :to="{name:'contact_us'}">{{$t('menu.contact')}}</NuxtLinkLocale>
+              <NuxtLinkLocale :to="{ name: 'contact_us' }">{{ $t('menu.contact') }}</NuxtLinkLocale>
             </li>
           </ul>
         </nav>
       </div>
     </section>
-    <section class="second-side-container" :class="{'ltr-line':i18nHead.htmlAttrs.dir=='ltr'}">
-      <NuxtLinkLocale :to="{name:'catalogue_page'}" class="button">
-        <span>{{$t('menu.downloads')}}</span>
+    <section class="second-side-container" :class="{ 'ltr-line': i18nHead.htmlAttrs.dir == 'ltr' }">
+      <NuxtLinkLocale :to="{ name: 'catalogue_page' }" class="button">
+        <span>{{ $t('menu.downloads') }}</span>
       </NuxtLinkLocale>
-      <button
-        class="no-button-appearance"
-        id="change-lang"
-        aria-label="change language - تغییر زبان"
-        @click="showLangMenu=!showLangMenu"
-      >
-        <span>{{i18nHead.htmlAttrs.lang.split("-").at(0)}}</span>
+      <button class="no-button-appearance" id="change-lang" aria-label="change language - تغییر زبان"
+        @click="showLangMenu = !showLangMenu">
+        <span>{{ i18nHead.htmlAttrs.lang.split("-").at(0) }}</span>
         <img src="~/assets/images/lang.svg" />
       </button>
       <div v-if="showLangMenu" id="popup-lang-list">
         <ul>
           <li v-for="lang in availableLocales" :key="lang.code">
-            <NuxtLink :to="switchLocalePath(lang.code)">{{lang.name}}</NuxtLink>
+            <NuxtLink :to="switchLocalePath(lang.code)">{{ lang.name }}</NuxtLink>
           </li>
         </ul>
       </div>
@@ -97,17 +89,21 @@ watch([route, i18nHead], () => {
   border-start-start-radius: 0;
   direction: ltr;
 }
+
 #popup-lang-list:dir(ltr) {
   direction: rtl;
 }
+
 #popup-lang-list ul {
   list-style: none;
   padding: 0;
   margin: 0;
 }
+
 #popup-lang-list a {
   color: var(--light-color-green);
 }
+
 header {
   position: fixed;
   top: 32px;
@@ -119,11 +115,13 @@ header {
   width: max-content;
   z-index: 102;
 }
-a{
+
+a {
   text-decoration: none;
 
 }
-header > section {
+
+header>section {
   background-color: var(--dark-color);
   height: 100%;
   display: flex;
@@ -153,31 +151,33 @@ header > section {
   transform: translateX(65%);
   border-radius: 4px;
 }
+
 .second-side-container.ltr-line::before {
   right: unset !important;
   left: 0 !important;
   transform: translateX(-65%);
 }
+
 #nav-container {
   padding-inline-end: 84px;
   height: 100%;
 }
 
 #lASA-LOGO,
-#lASA-LOGO > img {
+#lASA-LOGO>img {
   height: 100%;
 }
 
 nav,
-nav > ul,
-nav > ul li,
+nav>ul,
+nav>ul li,
 nav ul li a {
   height: 100%;
   font-family: Kalameh-Medium;
   font-size: 18px;
 }
 
-nav > ul {
+nav>ul {
   margin: 0;
   padding: 0;
   display: flex;
@@ -185,7 +185,7 @@ nav > ul {
   list-style: none;
 }
 
-nav > ul a {
+nav>ul a {
   color: #fff;
   display: flex;
   align-items: center;
@@ -193,17 +193,21 @@ nav > ul a {
   padding-inline: 12px;
   padding-top: 5px;
 }
-nav > ul a.router-link-active {
+
+nav>ul a.router-link-active {
   color: var(--light-color-green);
 }
+
 #change-lang {
   background: none;
   color: var(--light-color);
   gap: 8px;
+
   @media (min-width: 980px) {
     padding-inline-start: 24px;
   }
 }
+
 #menu-button {
   width: 56px;
   height: 48px;
@@ -221,28 +225,36 @@ nav > ul a.router-link-active {
 }
 
 @media (max-width: 980px) {
+
   header {
     width: calc(100% - 48px);
+  }
+  .button{
+    height: 100%;
   }
   button {
     padding-inline: 14px !important;
     height: 100%;
     font-size: 16px;
   }
+
   #change-lang {
     font-size: 12px;
   }
-  #change-lang > img {
+
+  #change-lang>img {
     width: 24px;
   }
+
   .first-side-menu-container {
     gap: 0px;
     flex: 1;
     justify-content: space-between;
   }
+
   #nav-container {
-    width: 64px;
-    height: 64px;
+    width: var(--menu-height);
+    height: var(--menu-height);
     overflow: hidden;
     position: fixed;
     padding: 24px;
@@ -253,11 +265,13 @@ nav > ul a.router-link-active {
     border-radius: 50%;
     background: var(--dark-color);
   }
-  #nav-container:dir(ltr){
+
+  #nav-container:dir(ltr) {
     left: 8px;
     right: unset;
-    
+
   }
+
   #nav-container::before {
     position: fixed;
     top: 0;
@@ -274,24 +288,28 @@ nav > ul a.router-link-active {
     transform-origin: center;
     transform-box: fill-box;
   }
+
   #nav-container:dir(ltr):before {
     right: unset;
     left: 0;
   }
+
   header.open-menu #nav-container::before {
     height: calc(100vh * 3);
-    top:-240px;
+    top: -240px;
     right: -240px;
-    box-shadow:0 0 20px rgba(81, 81, 81, 0.623);
+    box-shadow: 0 0 20px rgba(81, 81, 81, 0.623);
     transform: translate(50%, -50%);
   }
+
   header.open-menu #nav-container:dir(ltr)::before {
-    top:-240px;
+    top: -240px;
     left: -240px;
     right: unset;
     transform: translate(-50%, -50%);
 
   }
+
   header.open-menu #nav-container {
     top: calc(var(--menu-top-position) * -1);
     right: calc(var(--menu-right-postion) * -1);
@@ -299,60 +317,80 @@ nav > ul a.router-link-active {
     height: 100vh;
     border-radius: 0;
   }
+
   header.open-menu #nav-container:dir(ltr) {
     left: calc(var(--menu-right-postion) * -1);
     right: unset;
 
   }
 
-  #nav-container > nav {
+  #nav-container>nav {
     display: none;
     margin-top: 128px;
   }
+
   header.open-menu #nav-container nav {
     display: block !important;
   }
-  #nav-container > nav > ul {
+
+  #nav-container>nav>ul {
     flex-direction: column;
   }
-  nav > ul li {
+
+  nav>ul li {
     height: 78px;
   }
-  nav > ul li > a {
+
+  nav>ul li>a {
     justify-content: start;
     font-size: 24px;
     font-family: Kalameh-SemiBold;
     border-bottom: 1px solid #fff;
     padding-inline: 0;
   }
-  nav > ul a.router-link-active {
+
+  nav>ul a.router-link-active {
     border-bottom-color: var(--light-color-green);
     gap: 16px;
   }
-  nav > ul a.router-link-active::before {
+
+  nav>ul a.router-link-active::before {
     content: "";
     width: 16px;
     height: 16px;
     border-radius: 50%;
     background-color: var(--light-color-green);
   }
+
   .second-side-container {
     padding-inline: 12px 0;
     padding-block: 12px !important;
     gap: 0;
     justify-content: space-between;
   }
+
   .second-side-container::before {
     width: 14px;
   }
-  #menu-button > div {
+
+  #menu-button>div {
     width: 100%;
     height: 3px;
     background: #d9d9d9;
     border-radius: 3px;
   }
-  #menu-button > div:nth-child(2) {
+
+  #menu-button>div:nth-child(2) {
     width: 95%;
+  }
+}
+
+@media (max-width: 440px) {
+  .button {
+    padding-inline: 20px;
+    height: 100%;
+    font-size: 14px;
+    font-family: Kalameh-SemiBold;
   }
 }
 </style>

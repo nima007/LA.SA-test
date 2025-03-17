@@ -18,6 +18,18 @@
     }
 
 }
+@media (max-width: 440px) {
+    :root {
+        --padding-inline: 20px;
+        --gap: 20px;
+
+    }
+}
+@media (max-width: 410px) {
+    :root {
+        --menu-height: 56px;
+    }
+}
 
 @font-face {
     font-family: Kalameh-Light;
