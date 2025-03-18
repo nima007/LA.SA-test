@@ -9,7 +9,7 @@
       </div>
       <div id="wave"></div>
     </section>
-    <home-ValveUsage  style="pointer-events: none;" />
+    <home-ValveUsageApple  style="pointer-events: none;" />
     <section></section>
   </main>
 </template>
@@ -20,9 +20,12 @@ definePageMeta({
 });
 </script>
 <style scoped>
+main{
+  height: fit-content;
+  overflow: hidden;
+}
 main > *{
   z-index: 90;
-  position: relative;
 }
 .valve-usage-section{
   z-index: 89;

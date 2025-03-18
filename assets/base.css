@@ -8,6 +8,7 @@
     --menu-right-postion: 24px;
     --menu-height: 80px;
     --padding-inline: 64px;
+    --valve-size:216px;
 }
 
 @media (max-width: 980px) {
