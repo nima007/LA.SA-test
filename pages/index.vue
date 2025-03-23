@@ -32,6 +32,7 @@ main > *{
 }
 #hero-section {
   position: relative;
+  background-color: var(--light-color);
 }
 #hero-section .container {
   display: flex;
