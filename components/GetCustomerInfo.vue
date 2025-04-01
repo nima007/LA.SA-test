@@ -7,19 +7,19 @@
             </button>
         </div>
         <form @submit.prevent>
-            <p>با ثبت ایمیل خود در لاسا می توانید از محصولات و مقالات جدید ما با خبر بشوید</p>
+            <p>{{ $t('getuserinfo.text') }}</p>
             <div class="row">
                
                 <label for="">
-                    <span>Name</span>
+                    <span>{{ $t('getuserinfo.name') }}</span>
                     <input v-model="customerInfo.name" type="text" name="" id="">
                 </label>
                 <label for="">
-                    <span>Email *</span>
+                    <span> {{ $t('getuserinfo.email') }}*</span>
                     <input v-model="customerInfo.email" type="email" name="" id="">
                 </label>
             </div>
-            <button @click="saveCustomerInfo">save</button>
+            <button @click="saveCustomerInfo">{{ $t('getuserinfo.submit') }}</button>
         </form>
     </section>
 </template>

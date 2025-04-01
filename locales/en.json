@@ -58,6 +58,12 @@
     "download-catalogue":"download catalogue",
     "messages": {
         "no-content": "   there is no content for this page yet "
+    },
+    "getuserinfo":{
+        "text":"You can join us and stay informed about the work and updates we do.",
+        "name":"name",
+        "email":"email",
+        "submit":"join"
     }
     
 }
