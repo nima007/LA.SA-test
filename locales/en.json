@@ -55,6 +55,9 @@
         "no-lang-content":"Unfortunately, the content of this page is not available in this language."
     },
     "catalogue":"catalogue",
-    "download-catalogue":"download catalogue"
+    "download-catalogue":"download catalogue",
+    "messages": {
+        "no-content": "   there is no content for this page yet "
+    }
     
 }

@@ -33,7 +33,7 @@ const productSchema = new Schema({
   primaryImage: String,
   images: [String],
   catalogue: [String],
-});
+}, { timestamps: true });
 
 productSchema.pre('save', async function (next) {
     console.log("save product preSave");

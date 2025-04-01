@@ -3,7 +3,7 @@
         <h1 class="page-title-large">
             {{ $t('menu.contact') }}
         </h1>
-        <div id="wrapper-contact-us">
+        <div v-if="footerSetting" id="wrapper-contact-us">
             <section>
                 <p>{{ $t('contact-page.tell-title') }}</p>
                 <a v-for="phone in footerSetting.phones" class="button" :href="`tel:${phone}`">
@@ -53,6 +53,9 @@
                 </form>
             </section>
         </div>
+        <div v-else>
+            <p><strong>{{ $t('messages.no-content') }}</strong></p>
+        </div>
     </main>
 </template>
 <script setup>
@@ -62,7 +65,8 @@ definePageMeta({
 });
 const ctaLoading = ref(false)
 const lang = useI18n().locale.value
-const footerSetting = useState('default-setting').value?.footer
+const footerSetting = useState('default-setting').value?.foote
+
 console.log("footerSetting", footerSetting);
 const message = ref({
   senderName: "",

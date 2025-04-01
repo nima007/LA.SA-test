@@ -2,14 +2,16 @@ export default async function (Schema, event = useEvent()) {
     console.log("in validation");
     const body = await readBody(event);
     
-    const { error } = Schema.validate(body)
+    const { error} = Schema.validate(body)
+ 
+    
     if (error) {
         console.log("there is err");
-        console.log(error.details);
+        console.log(JSON.stringify(error.details.map(d => ({ message: d.message, path: d.path }))));
         console.log("! validation : there is a  error", error.details.map(d => ({ message: d.message, path: d.path })));
-        throw createError({
+        throw  createError({
             statusCode: 400,
-            message: JSON.stringify(error.details.map(d => ({ message: d.message, path: d.path }))),
+            statusMessage: JSON.stringify(error.details.map(d => ({ message: d.message, path: d.path }))),
             data: { additional: "info" }
         });
         return false

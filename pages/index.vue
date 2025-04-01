@@ -7,7 +7,9 @@
         <img class="valve-image" src="~/assets/images/valves/valveBack.png" alt />
         <h1 class="side-text">{{$t('hero.description')}}</h1>
       </div>
-      <div id="wave"></div>
+      <div id="wave">
+        <img src="~/assets/images/circlecrop.svg" alt="">
+      </div>
     </section>
     <home-ValveUsageApple  style="pointer-events: none;" />
     <section></section>
@@ -68,14 +70,20 @@ main > *{
 #hero-section #wave {
   width: 100%;
   height: 28vh;
-  background: radial-gradient(
+  /* background: radial-gradient(
     ellipse farthest-side at center -17%,
     transparent 101%,
     var(--dark-color) 101%
-  );
+  ); */
   position: absolute;
   bottom: 0;
   left: 0;
+}
+#hero-section #wave img{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* height: 100%; */
 }
 main {
 }

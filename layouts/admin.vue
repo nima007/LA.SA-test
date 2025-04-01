@@ -18,7 +18,9 @@
                     <li>
                         <NuxtLinkLocale :to="{name:'admin_messages_page'}">پیام ها</NuxtLinkLocale>
                     </li>
-                    
+                    <li>
+                        <NuxtLinkLocale :to="{name:'admin-pages-contents-page'}">صفحه ها</NuxtLinkLocale>
+                    </li>
                 </ul>
             </nav>
         </header>

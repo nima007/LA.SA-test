@@ -65,7 +65,7 @@ await $fetch('/api/customerInfo',{
     top: 50%;
     left: 50%;
     translate: -50% -50%;
-    z-index: 90;
+    z-index: 102;
     padding: var(--gap);
     color: #fff;
     border-radius: var(--gap);
@@ -112,5 +112,13 @@ form > p{
 }
 input{
     color: #fff;
+}
+@media (max-width:980px) {
+    #get-user-info {
+        width: 100%;
+    }
+    form .row{
+        flex-direction: column;
+    }
 }
 </style>

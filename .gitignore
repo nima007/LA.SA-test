@@ -23,5 +23,6 @@ logs
 .env.*
 !.env.example
 server/filesnull/
+server/files/temp/
 public/uploads/products_images/
 public/uploads/blog/
