@@ -275,6 +275,7 @@ onMounted(() => {
     position: sticky;
     top: 0;
     background: var(--light-color);
+    z-index: 1;
 }
 #fixed-menu > .control-group > .button-group{
     display: flex;
