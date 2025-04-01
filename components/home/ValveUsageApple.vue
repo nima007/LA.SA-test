@@ -1,7 +1,7 @@
 <template>
   <div id="main-valve-usage" ref="MAIN_WARPPER_SECTION">
     <img id="float-valve-image" :class="{ 'in-viewport': VMWS, 'valve-on-pack': VS3||VS4, 'valve-on-pack-hide': VS4 }"
-      ref="FLOAT_VALVE_IMAGE" src="~/assets/images/valves/valveBack.png" alt />
+      ref="FLOAT_VALVE_IMAGE" src="~/assets/images/valves/valveFront.png" alt />
     <section id="section-1" ref="SECTION_1" :class="{ 'in-viewport': VS1 }">
       <div class="section-content-wrapper opacity-base">
         <div class="content-start-side translate-base">
@@ -59,11 +59,6 @@
      
       </div>
     </section>
-    <!-- <div id="status-holder">
-      <p>VS1 : {{ VS1 }}</p>
-      <p>VS2 : {{ VS2 }}</p>
-      <p>VS3 : {{ VS3 }}</p>
-    </div> -->
   </div>
 </template>
 
