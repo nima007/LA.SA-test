@@ -11,7 +11,7 @@
         <img src="~/assets/images/circlecrop.svg" alt="">
       </div>
     </section>
-    <home-ValveUsageApple  style="pointer-events: none;" />
+    <home-ValveUsage  style="pointer-events: none;" />
     <section></section>
   </main>
 </template>
