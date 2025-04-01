@@ -9,19 +9,18 @@
         <section id="blogs-and-categories-wrapper">
             <ul id="categories-list">
                 <li>
-                    <a href="">همه</a>
+                    <NuxtLinkLocale :to="{query:{}}">همه </NuxtLinkLocale>
                 </li>
-                <li>
-                    <a href="">سوپاپ های لاسا</a>
+                <li v-for="category in categoryList">
+                    <NuxtLinkLocale :class="{'current-query':categoryFilter==category.slug}" :to="{query:{'filter':category.slug}}">{{ category.name }}  </NuxtLinkLocale>
                 </li>
             </ul>
         </section>
         <section>
             <ul v-if="blogsList" id="blog-list">
-                <li v-for="blog in blogListFilterd">
+                <li v-for="blog in blogListFilterdByLang">
                     <BlogThumbBlog :blog-data="blog"></BlogThumbBlog>
                 </li>
-
             </ul>
         </section>
     </main>
@@ -31,13 +30,42 @@ definePageMeta({
     name: 'blogs_index',
     auth:false
 })
+const route = useRoute()
+
 const { data: blogsList } = await useFetch('/api/blogs', { query: { lang: useI18n().locale.value } });
 console.log("blogList", blogsList);
-
+let categories = blogsList.value.map(blog=>blog.categories).flat()
+console.log("categories" , categories);
 const lang = useI18n().locale;
+
+const categoryList = computed(()=>{
+    let listObject =  Object.groupBy(categories,({slug})=>{
+        return slug
+    })
+    const list = []
+    for(const cat in listObject){
+        console.log(cat);
+        console.log(listObject[cat]);
+        list.push({slug:cat,name:listObject[cat][0].name[lang.value]})
+    }
+    return list
+})
+console.log("cl",categoryList.value,typeof categoryList.value);
+
 let x = `blog.title[${lang.value}]`
-const blogListFilterd = computed(() => {
-    return blogsList.value.filter(blog => blog.title[lang.value])
+const categoryFilter = ref(route.query.filter||false)
+
+const blogListFilterdByLang = computed(() => {
+    return blogsList.value.filter(blog => blog.title[lang.value]&&(!categoryFilter.value||blog.categories.map(cat=>cat.slug).includes(categoryFilter.value)))
+})
+
+onMounted(()=>{
+    watch(route,()=>{
+        console.log("change :", route.query.filter);
+        
+        categoryFilter.value = route.query.filter||false
+    })
+    
 })
 </script>
 <style scoped>
@@ -86,7 +114,7 @@ main {
     height: fit-content;
 }
 
-#categories-list li a:hover {
+#categories-list li a:hover,#categories-list li a.current-query {
     background: var(--dark-color);
     color: var(--light-color);
     padding-inline: var(--gap);

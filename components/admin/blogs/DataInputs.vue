@@ -2,13 +2,15 @@
 const blogModel = defineModel();
 const { handleFileInput: handleImage, files: imageFiles } = useFileStorage({ clearOldFiles: true })
 console.log("imageFiles: ", imageFiles);
-
+const { data: categoriesList } = await useFetch("/api/admin/blogs/category", {
+    method: 'get'
+})
 watch(imageFiles, () => {
     console.log("ChangeimageFiles: ", imageFiles);
 
     blogModel.value.image = imageFiles.value
 }, { deep: true })
-
+const showCateList = ref(false)
 </script>
 <template>
     <form v-if="blogModel" @submit.prevent>
@@ -25,10 +27,14 @@ watch(imageFiles, () => {
         <section>
             <h2>دسته بندی</h2>
             <div>
-                <label>
-                    <p>افزودن تصویر</p>
-                    <select style="width: auto;" name="" id="">
-                        <option value="" disabled selected> یک دسته بندی انتخاب کنید</option>
+                <label class="multiple-select-label" for="categories-select" style="position: relative;">
+                    <!-- <p>افزودن تصویر</p> -->
+                    <p @click="showCateList=true"> یک دسته بندی انتخاب کنید</p>
+                    <!-- <option value="" disabled selected> یک دسته بندی انتخاب کنید</option> -->
+
+                    <select style="width: auto; " multiple v-model="blogModel.categories" name="" id="categories-select">
+                        <option v-for="category in categoriesList" :value="category._id" >{{ category.name.fa }} | {{ category.name.en }}</option>
+                        
                     </select>
                 </label>
             </div>
@@ -137,5 +143,19 @@ input[type=file] {
 
 .title-input {
     width: 300px !important;
+}
+.multiple-select-label{
+    position: relative;
+}
+.multiple-select-label > select{
+    height: fit-content !important;
+    max-height: 50vh !important;
+    background: var(--light-color);
+    overflow: auto;
+    padding: var(--gap);
+    /* display: none; */
+}
+.multiple-select-label > select:focus{
+    display: inline-block !important;
 }
 </style>

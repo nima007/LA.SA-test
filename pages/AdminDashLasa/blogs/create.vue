@@ -19,7 +19,8 @@ const blog = ref({
         en: ""
     },
     image: null,
-    slug: ""
+    slug: "",
+    categories:[]
 });
 const BlogState = useState('blog_state')
 if (!BlogState.value) {

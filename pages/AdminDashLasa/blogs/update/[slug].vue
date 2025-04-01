@@ -17,7 +17,7 @@ const { data } = await useFetch(`/api/admin/blogs/blog/${slug}`, {
 console.log(data);
 
 if (data) {
-    blog.value = new FrontBlog(data.value.title, data.value.content, data.value.image, data.value.slug)
+    blog.value = new FrontBlog(data.value.title, data.value.content, data.value.image, data.value.slug,data.value?.categories||[])
 
 }
 

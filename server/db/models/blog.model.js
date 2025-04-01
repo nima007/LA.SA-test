@@ -21,10 +21,14 @@ const blogSchema = new Schema(
     },
     image: [String],
     categories: [String],
-    user:{
-      id:Schema.Types.ObjectId,
-      name:String
-    }
+    user: {
+      id: Schema.Types.ObjectId,
+      name: String
+    },
+    categories: [{
+      type: Schema.Types.ObjectId,
+      ref: 'Blog_Category'
+    }]
   },
   { timestamps: true }
 );

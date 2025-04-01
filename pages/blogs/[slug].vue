@@ -8,8 +8,8 @@
                     <span>{{ new Date(blog.updatedAt).toLocaleDateString(lang) }}</span>
                 </div>
                 <div class="spliter"></div>
-                <div class="chips">
-                    <span>سوپاپ های لاسا</span>
+                <div v-for="category in blog.categories" class="chips">
+                    <span> {{ category.name.fa }}</span>
                 </div>
             </div>
             <img class="blog-image" itemprop="image" :src="blog.image" alt="">

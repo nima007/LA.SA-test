@@ -47,5 +47,13 @@ const save = () => {
 #section-html-content {
     border-top: 1px solid;
     height: 200px;
+    display: flex;
+    padding: var(--gap);
+    gap: var(--gap);
+}
+#section-html-content code{
+    flex: 1;
+    overflow: auto;
+    height: 100%;
 }
 </style>
