@@ -34,7 +34,7 @@ const route = useRoute()
 
 const { data: blogsList } = await useFetch('/api/blogs', { query: { lang: useI18n().locale.value } });
 console.log("blogList", blogsList);
-let categories = blogsList.value.map(blog=>blog.categories).flat()
+let categories = blogsList.value ? blogsList.value.map(blog=>blog.categories).flat():[]
 console.log("categories" , categories);
 const lang = useI18n().locale;
 
