@@ -41,7 +41,7 @@
     </section>
     <section id="section-4" ref="SECTION_4" class="high-index" :class="{ 'in-viewport': VS4 }">
       <div class="section-content-wrapper opacity-base full-width-height high-index no-transition-in">
-        <img src="~/assets/images/coffeePacketGoldRozeWithBackground.png" alt />
+        <img src="~/assets/images/coffeePacketGoldRozeWithBackgroundHasValve.png" alt />
       </div>
       <div class="section-overlay-conent-wrapper translate-base">
         <div class="content-box">
