@@ -7,5 +7,9 @@
             "name":"tempserver",
             "mountTo":"./server/files/temp"
         }
-    ]
+    ],
+    
+    "node": {
+        "version": "22"
+      }
 }
