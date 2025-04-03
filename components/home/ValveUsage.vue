@@ -145,17 +145,7 @@ onMounted(() => {
   color: #fff;
 }
 
-#main-valve-usage>section:nth-of-type(1) {
-  /* background: orange; */
-}
 
-#main-valve-usage>section:nth-of-type(2) {
-  /* background: purple; */
-}
-
-#main-valve-usage>section:nth-of-type() {
-  background: aqua;
-}
 
 .section-content-wrapper {
   position: fixed;
