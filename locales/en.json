@@ -64,6 +64,15 @@
         "name":"name",
         "email":"email",
         "submit":"join"
+    },
+    "see-all-products":" see all products ",
+    "pages-title":{
+        "products":"valves",
+        "blogs":"blogs",
+        "contactus":"contact us",
+        "aboutus":"about us",
+        "home": "home"
+
+
     }
-    
 }
