@@ -13,13 +13,14 @@ export default defineNuxtConfig({
   app:{
     pageTransition: { name: 'page' },
     head:{
-      titleTemplate: '%s - LASA',
       title: 'LASA',
+
+      // title: 'LASA',
       // meta: [
       //   { charset: 'utf-8' },
       //   { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       //   { name: 'description', content: 'LASA' }
-      // ]
+      // ]  
     }
   },
   fileStorage: {
