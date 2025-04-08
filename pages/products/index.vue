@@ -12,7 +12,8 @@
 <script setup>
 definePageMeta({
   name: "products",
-  auth:false
+  auth:false,
+  title:"pages-title.products"
 });
 
 const {data} = await useFetch("/api/products",{query:{lang:useI18n().locale.value}});

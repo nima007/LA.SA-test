@@ -61,7 +61,9 @@
 <script setup>
 definePageMeta({
     name: 'contact_us',
-    auth: false
+    auth: false,
+    title:"pages-title.contactus"
+
 });
 const ctaLoading = ref(false)
 const lang = useI18n().locale.value

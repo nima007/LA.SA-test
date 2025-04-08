@@ -28,7 +28,9 @@
 <script setup>
 definePageMeta({
     name: 'blogs_index',
-    auth:false
+    auth:false,
+    title:"pages-title.blogs"
+
 })
 const route = useRoute()
 

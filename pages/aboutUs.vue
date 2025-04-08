@@ -6,7 +6,7 @@
     </aside>
     <article class="about-us-content">
       <h1 style="margin-top: 0; font-size: 32px;">{{ $t('aboutus.title') }}</h1>
-  
+
       <p v-if="aboutuscontent" v-html="aboutuscontent">
       </p>
       <p v-else>
@@ -19,15 +19,17 @@
 <script setup>
 definePageMeta({
   name: "about_us",
-  auth: false
+  auth: false,
+  title: "pages-title.aboutus"
+
 })
 const lang = useI18n().locale.value
 const aboutuscontent = ref(null)
-useFetch('/api/aboutuscontent',{method:'get',query:{'lang':lang}}).then(res=>{
-  aboutuscontent.value= res.data.value
+useFetch('/api/aboutuscontent', { method: 'get', query: { 'lang': lang } }).then(res => {
+  aboutuscontent.value = res.data.value
   console.log(res.data.value);
-  
-}).catch(e=>{
+
+}).catch(e => {
   aboutuscontent.value = null
 })
 </script>
@@ -42,6 +44,7 @@ main {
   margin: auto;
   display: flex;
   gap: 12%;
+
   @media (max-width:980px) {
     gap: 48px;
     flex-direction: column;
@@ -52,6 +55,7 @@ main {
 aside {
   width: 30%;
   overflow: hidden;
+
   @media (max-width:980px) {
     width: 50%;
   }
@@ -61,21 +65,25 @@ aside {
 aside img {
   max-width: 100%;
   margin-bottom: calc(var(--gap) * 2);
- 
+
 }
 
 .about-us-content {
   flex: 1;
   font-size: 20px;
 }
-.about-us-content *{
+
+.about-us-content * {
   max-width: 100%;
 }
-.about-us-content > p{
+
+.about-us-content>p {
   line-height: 42px;
   margin-top: -16px;
+
   @media (max-width:980px) {
-  text-align: justify;;
+    text-align: justify;
+    ;
   }
 }
 </style>
