@@ -13,7 +13,12 @@ const settingSchema = new Schema(
         }
       ],
       address:String
-    },
+    },bestProducts:[
+      {
+        type:Schema.Types.ObjectId,
+        ref:'Product'
+      }
+    ]
   },
   { timestamps: true }
 );

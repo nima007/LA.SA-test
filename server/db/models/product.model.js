@@ -1,4 +1,5 @@
 import mongoose, { model, Schema } from "mongoose";
+import updateBestProducts from "~/server/utils/updateBestProducts";
 
 const productSchema = new Schema({
   slug: {
@@ -43,7 +44,9 @@ productSchema.pre('save', async function (next) {
     }
     next();
   })
-
+productSchema.post('save',()=>{
+  updateBestProducts()
+})
 async function slugGenerator(doc) {
   console.log("updating slug");
   const baseSlug = doc.name.en.trim().replaceAll(" ", "-").normalize()

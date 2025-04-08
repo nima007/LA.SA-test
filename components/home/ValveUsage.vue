@@ -223,6 +223,7 @@ onMounted(() => {
   row-gap: 48px;
   padding: 5vw;
   /* padding: 200px; */
+  /* padding-bottom: 20vh; */
   @media (min-width:980px) {
     column-gap: 50vh;
   }
