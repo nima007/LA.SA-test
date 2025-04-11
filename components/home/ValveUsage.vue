@@ -1,33 +1,35 @@
 <template>
   <div id="main-valve-usage" ref="MAIN_WARPPER_SECTION">
-    <img id="float-valve-image" :class="{ 'in-viewport': VMWS, 'valve-on-pack': VS3||VS4, 'valve-on-pack-hide': VS4 }"
+    <img id="float-valve-image" :class="{ 'in-viewport': VMWS, 'valve-on-pack': VS3 || VS4, 'valve-on-pack-hide': VS4 }"
       ref="FLOAT_VALVE_IMAGE" src="~/assets/images/valves/valveFront.png" alt />
     <section id="section-1" ref="SECTION_1" :class="{ 'in-viewport': VS1 }">
       <div class="section-content-wrapper opacity-base">
         <div class="content-start-side translate-base">
-          <h1>hello word</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero accusantium illum incidunt ipsa
-            repellendus facere nihil voluptates voluptatibus similique, laborum, non perferendis culpa cumque rerum
-            aperiam! Adipisci, quae natus?</p>
+          <h1> چرا سوپاپ بسته‌بندی یورو والو</h1>
+          <p>
+           یکی از مشکلات بسته‌بندی در صنایع غذایی  بالاخص صنعت قهوه تساعدگاز‌هایی مانند دی اکسیر کربن از مواد عذایی بود که باعث تورم ،پارگی و انفجار بسته‌بندی می شد . 
+           خوشبختانه این مشکل از سال ۱۹۸۰ حل شده و راه حل داره .
+          </p>
         </div>
         <div class="content-end-side translate-base">
-          <h1>hello word</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero accusantium illum incidunt ipsa
-            repellendus facere nihil voluptates voluptatibus similique, laborum, non perferendis culpa cumque rerum
-            aperiam! Adipisci, quae natus?</p>
+          <!-- <h1>hell</h1> -->
+          <p>
+             همان‌طور که گفتیم علت باد کردن و تورم بسته بندی قهوه، تساعد گاز دی اکسید کربن از دانه‌های قهوه بعد از عملیات برشته کاری است . برای خارج کردن این گاز
+             و جلوگیری از ورود اکسیژن به بسته‌بندی می توانید از سوپاپ یورو والو استفاده کنید .
+          </p>
         </div>
       </div>
     </section>
     <section id="section-2" ref="SECTION_2" :class="{ 'in-viewport': VS2 }">
       <div class="section-content-wrapper opacity-base">
         <div class="content-start-side translate-base">
-          <h1>GoodBye word</h1>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero accusantium illum incidunt ipsa
-            repellendus facere nihil voluptates voluptatibus similique, laborum, non perferendis culpa cumque rerum
-            aperiam! Adipisci, quae natus?</p>
+          <!-- <h1>GoodBye word</h1> -->
+          <p>
+            سوپاپ‌های یورو والو از مواد مقاوم دربرابر فشار ،ساخته می‌شوند که به محض افزایش فشار ،گاز را از بسته‌بندی خارج می‌کند و با به تعادل رسیدن فشار ، دریجه بسته می‌شود و مانع از ورود اکسیژن و آلودگی به داخل بسته‌بندی می شود . 
+          </p>
         </div>
         <div class="content-end-side translate-base">
-          <h1>GoodBye word</h1>
+          <!-- <h1>GoodBye word</h1> -->
           <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero accusantium illum incidunt ipsa
             repellendus facere nihil voluptates voluptatibus similique, laborum, non perferendis culpa cumque rerum
             aperiam! Adipisci, quae natus?</p>
@@ -56,7 +58,7 @@
           <h3 class="title">Lorem ipsum dolor sit.</h3>
           <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur?</p>
         </div>
-     
+
       </div>
     </section>
   </div>
@@ -103,12 +105,13 @@ onMounted(() => {
   width: var(--valve-size);
   z-index: 10;
   scale: 0;
-  transition: scale 1s, width 1s ,translate 1s;
+  transition: scale 1s, width 1s, translate 1s;
   transform-origin: center center;
   transform-box: fill-box;
+
   @media (max-width:980px) {
     width: 30vw;
-    top: 30vh; 
+    top: 30vh;
   }
 }
 
@@ -119,8 +122,9 @@ onMounted(() => {
 #float-valve-image.in-viewport.valve-on-pack {
   translate: -50% -80%;
   width: 8vh;
+
   @media (max-width:980px) {
-    top: 50vh; 
+    top: 50vh;
   }
 }
 
@@ -176,6 +180,7 @@ onMounted(() => {
   bottom: 0;
   left: 50%;
   translate: -50% 0;
+
   @media (max-width:980px) {
     bottom: -50%;
     translate: -50% -50%;
@@ -222,6 +227,7 @@ onMounted(() => {
   justify-content: space-between;
   row-gap: 48px;
   padding: 5vw;
+
   /* padding: 200px; */
   /* padding-bottom: 20vh; */
   @media (min-width:980px) {
@@ -275,8 +281,8 @@ onMounted(() => {
   }
 
   #section-4 .section-overlay-conent-wrapper .content-box:nth-child(even) {
-  margin-top: 256px;
-}
+    margin-top: 256px;
+  }
 }
 
 @media (max-width: 980px) {
@@ -303,15 +309,17 @@ onMounted(() => {
     translate: 0 0;
   }
 
-  #section-4 .section-overlay-conent-wrapper{
+  #section-4 .section-overlay-conent-wrapper {
     flex-direction: column;
     align-items: center;
   }
-  #float-valve-image{
+
+  #float-valve-image {
     z-index: 3;
   }
+
   #section-1 .section-content-wrapper,
-  #section-2 .section-content-wrapper{
+  #section-2 .section-content-wrapper {
     background: #0F182033;
     z-index: 3;
     bottom: 0;
