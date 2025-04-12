@@ -12,8 +12,22 @@
         "title": "Your coffee bag needs a LA.SA valve",
         "description": "The best way to keep coffee fresh"
     },
-    "home":{
-
+    "home": {
+        "benefits":{
+            "quality":{
+                "title":"Preserving Quality",
+                "text":"One of the main factors that can damage the flavor and aroma of coffee is oxidation, which happens when oxygen enters the packaging and reacts with the coffee beans. The Euro Valve one-way degassing valve is a smart solution that allows carbon dioxide to escape the package without letting oxygen or any contaminants in — keeping the coffee fresh and full of flavor."
+            },
+            "packaging":{
+                "title":"Extending Shelf Life of Product and Packaging",
+                "text":"Euro Valve’s one-way valves release internal gas and pressure, preventing package swelling and damage. This not only helps maintain a better appearance for the product, but also reduces waste and overall costs."
+            },
+            "foodgrade":{
+                "title":"Food-Grade Safety",
+                "text":"While many valves are made from recycled plastics, Euro Valve uses plastics that are certified food-grade. This ensures better hygiene and safety in food packaging."
+            }
+        } 
+        
     },
     "aboutus": {
         "title": "About us"

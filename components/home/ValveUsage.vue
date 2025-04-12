@@ -5,7 +5,7 @@
     <section id="section-1" ref="SECTION_1" :class="{ 'in-viewport': VS1 }">
       <div class="section-content-wrapper opacity-base">
         <div class="content-start-side translate-base">
-          <h1> چرا سوپاپ بسته‌بندی یورو والو</h1>
+          <h1> چرا سوپاپ بسته‌بندی یورو والو ؟</h1>
           <p>
            یکی از مشکلات بسته‌بندی در صنایع غذایی  بالاخص صنعت قهوه تساعدگاز‌هایی مانند دی اکسیر کربن از مواد عذایی بود که باعث تورم ،پارگی و انفجار بسته‌بندی می شد . 
            خوشبختانه این مشکل از سال ۱۹۸۰ حل شده و راه حل داره .
@@ -14,7 +14,8 @@
         <div class="content-end-side translate-base">
           <!-- <h1>hell</h1> -->
           <p>
-             همان‌طور که گفتیم علت باد کردن و تورم بسته بندی قهوه، تساعد گاز دی اکسید کربن از دانه‌های قهوه بعد از عملیات برشته کاری است . برای خارج کردن این گاز
+             همان‌طور که گفتیم علت باد کردن و تورم بسته بندی قهوه،
+              تساعد گاز دی اکسید کربن از دانه‌های قهوه بعد از عملیات برشته کاری است .  برای خارج کردن این گاز
              و جلوگیری از ورود اکسیژن به بسته‌بندی می توانید از سوپاپ یورو والو استفاده کنید .
           </p>
         </div>
@@ -25,14 +26,14 @@
         <div class="content-start-side translate-base">
           <!-- <h1>GoodBye word</h1> -->
           <p>
-            سوپاپ‌های یورو والو از مواد مقاوم دربرابر فشار ،ساخته می‌شوند که به محض افزایش فشار ،گاز را از بسته‌بندی خارج می‌کند و با به تعادل رسیدن فشار ، دریجه بسته می‌شود و مانع از ورود اکسیژن و آلودگی به داخل بسته‌بندی می شود . 
+            سوپاپ‌های یورو والو از مواد مقاوم دربرابر فشار ساخته می‌شوند که به محض افزایش فشار ،گاز را از بسته‌بندی خارج می‌کند و با به تعادل رسیدن فشار ، دریجه بسته می‌شود و مانع از ورود اکسیژن و آلودگی به داخل بسته‌بندی می شود . 
           </p>
         </div>
         <div class="content-end-side translate-base">
           <!-- <h1>GoodBye word</h1> -->
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab vero accusantium illum incidunt ipsa
-            repellendus facere nihil voluptates voluptatibus similique, laborum, non perferendis culpa cumque rerum
-            aperiam! Adipisci, quae natus?</p>
+          <p>
+            این سوپاپ هم  از آسیب دیدن بسته بندی جلوگیری می‌کنه که باعث حمل و نقل مطمعن بار قهوه می‌شه و هم مانع از اکسیداسیون ، افت کیفیت و تغییر طعم قهوه می شه .
+          </p>
         </div>
       </div>
     </section>
@@ -47,18 +48,23 @@
       </div>
       <div class="section-overlay-conent-wrapper translate-base">
         <div class="content-box">
-          <h3 class="title">Lorem ipsum dolor sit.</h3>
-          <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur?</p>
+          <h3 class="title">{{ $t('home.benefits.packaging.title') }} :</h3>
+          <p class="text">
+            {{ $t('home.benefits.packaging.text') }}
+          </p>
         </div>
         <div class="content-box">
-          <h3 class="title">Lorem ipsum dolor sit.</h3>
-          <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur?</p>
+          <h3 class="title">{{ $t('home.benefits.quality.title') }} :</h3>
+          <p class="text">
+            {{ $t('home.benefits.quality.text') }}
+          </p>
         </div>
         <div class="content-box">
-          <h3 class="title">Lorem ipsum dolor sit.</h3>
-          <p class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas, consectetur?</p>
+          <h3 class="title">{{ $t('home.benefits.foodgrade.title') }} :</h3>
+          <p class="text">
+            {{ $t('home.benefits.foodgrade.text') }}
+          </p>
         </div>
-
       </div>
     </section>
   </div>
