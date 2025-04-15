@@ -35,8 +35,9 @@ export default defineNuxtConfig({
   },
   auth: {
     globalAppMiddleware: true,
-    baseURL: 'http://localhost:3000/api/auth'
-    // baseURL: "https://lasa.liara.run/api/auth"
+    // baseURL: 'http://localhost:3000/api/auth'
+    baseURL: "https://degassingvalvecoffee.com/api/auth"
+    
   },
   plugins: ["~/plugins/vue-tel-input.ts"],
   i18n: {
@@ -58,13 +59,15 @@ export default defineNuxtConfig({
       }
     ],
     strategy: 'prefix_and_default',
-    baseUrl: 'localhsot:3000'
+    // baseUrl: 'localhsot:3000'
+    baseUrl: 'https://degassingvalvecoffee.com'
     // baseUrl: 'https://lasa.liara.run'
+    
   },
   runtimeConfig: {
     mongoose_url: 
-    // 'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
-    'mongodb://localhost:27017/LASA_db',
+    'mongodb://root:55s7R1D4PyELefVzDV9Qh6FT@lasa-db:27017/my-app?authSource=admin',
+    // 'mongodb://localhost:27017/LASA_db',
 
     storeMountPath,
     relStoreMountPath
@@ -74,13 +77,13 @@ export default defineNuxtConfig({
     storage: {
       productsImages: {
         driver: 'fs',
-        base: 'public/uploads/products_images'
-        // base: '.output/public/uploads/products_images',
+        // base: 'public/uploads/products_images'
+        base: '.output/public/uploads/products_images',
       },
       blogFile: {
         driver: 'fs',
-        base: 'public/uploads/blog'
-        // base: '.output/public/uploads/blog',
+        // base: 'public/uploads/blog'
+        base: '.output/public/uploads/blog',
       }
     }
   }

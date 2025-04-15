@@ -8,7 +8,7 @@ const updateProductSchema = Joi.object({
         .min(0)
         .items(
             Joi.object({
-                _id:Joi.string(),
+                _id: Joi.string(),
                 name: Joi.object({
                     fa: Joi.string(),
                     en: Joi.string(),
@@ -23,6 +23,8 @@ const updateProductSchema = Joi.object({
                 }),
             })
         ),
+    createdAt: Joi.string().optional().allow(""),
+    updatedAt: Joi.string().optional().allow(""),
 })
 
 export default updateProductSchema.concat(createProduct)
